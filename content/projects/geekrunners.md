@@ -7,6 +7,6 @@ weight = 30
 tags = ["Sports", "Individuals"]
 
 [extra]
-canonical_url = "https://osc.garden/projects/doteki/"
+canonical_url = "https://www.geekrunners.com"
 +++
 
