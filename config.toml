@@ -21,3 +21,10 @@ highlight_theme = "css"
 
 [extra]
 # Put all your custom variables here
+allowed_domains = [
+    { directive = "font-src", domains = ["'self'", "data:"] }, # Fonts from self or data URIs
+    { directive = "img-src", domains = ["'self'", "https://www.minimily.com"] }, # Images from self or specific host
+    { directive = "script-src", domains = ["'self'"] }, # Scripts only from self
+    { directive = "style-src", domains = ["'self'"] }, # Styles from self
+    { directive = "frame-src", domains = ["https://www.youtube-nocookie.com"] }, # Allow YouTube embeds
+]
