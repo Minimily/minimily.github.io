@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://minimily.com"
+base_url = "https://www.minimily.com"
 
 title = "Minimily"
 
@@ -10,6 +10,8 @@ compile_sass = true
 build_search_index = true
 
 theme = "tabi"
+
+taxonomies = [{name = "tags", feed = true}]
 
 [markdown]
 # Whether to do syntax highlighting
