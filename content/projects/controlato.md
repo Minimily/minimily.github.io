@@ -1,10 +1,10 @@
 +++
 title = "Controlato"
-description = "Business Process management"
+description = "An alternative to complex and expensive process tools to manage your business processes"
 weight = 30
 
 [taxonomies]
-tags = ["Business", "Management"]
+tags = ["Business", "Management", "Web"]
 
 [extra]
 canonical_url = "https://www.controlato.com"
