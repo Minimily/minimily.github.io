@@ -1,9 +1,7 @@
 +++
-paginate_by = 5
 title = "Blog"
+description = "Description"
 sort_by = "date"
-insert_anchor_links = "left"
-
-[extra]
-show_previous_next_article_links = true
+template = "blog.html"
+page_template = "post.html"
 +++
