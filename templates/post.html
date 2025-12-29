@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="title">
+<h1 class="display-4">
     {{ page.title }}
 </h1>
-<p class="subtitle"><strong>{{ page.date }}</strong></p>
+<p class="lead">By <b>{{ page.authors[0] }}</b>, on <b>{{ page.date | date(format="%A, %B %d, %Y") }}</b></p>
 
 <div class="row">
     <div class="col">

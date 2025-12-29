@@ -1,7 +1,6 @@
 +++
 title = "Git Experiences"
-description = "An alternative to complex and expensive process tools to manage your business processes"
-weight = 30
+description = "The accumulated experience we had working with Git over the years."
 
 [extra]
 canonical_url = "https://www.minimily.com/git-experiences"

@@ -5,9 +5,13 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="title">
+<h1 class="display-5">
     {{ section.title }}
 </h1>
+
+<p class="lead">
+    {{ section.description }}
+</p>
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
 {% for section_path in section.subsections %}
@@ -15,9 +19,9 @@
     <div class="col">
         <div class="card h-100">
             <div class="card-body">
-                <h3 class="card-title">{{ section.title }}</h3>
+                <h3 class="card-title"><a href="{{ section.path }}" class="nav-link">{{ section.title }}</a></h3>
                 <p class="lead">{{ section.description }}</p>
-                <a href="{{ section.path }}" target="_blank" class="card-link">Learn More</a>
+                <a href="{{ section.path }}" class="card-link">Learn More</a>
             </div>
         </div>
     </div>

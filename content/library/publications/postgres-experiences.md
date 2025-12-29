@@ -1,6 +1,6 @@
 +++
 title = "PostgreSQL Experiences"
-description = "Ensure your repetitive tasks are always done the same way"
+description = "The accumulated experience we had working with PostgreSQL over the years."
 weight = 30
 
 [extra]

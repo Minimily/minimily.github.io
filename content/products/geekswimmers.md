@@ -1,9 +1,8 @@
 +++
 title = "Geek Swimmers"
-description = "Use time standards and records to benchmark summer's times."
-weight = 30
+description = "A service for swim clubs that want to benchmark their athletes' performance against time standards and records."
 
 [extra]
-canonical_url = "https://osc.garden/projects/doteki/"
+canonical_url = "https://www.geekswimmers.com"
 +++
 

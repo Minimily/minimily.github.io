@@ -1,8 +1,8 @@
 +++
-title = "How We Created Minimily's Website Using Zola and Publishing to Github Pages"
+title = "We built your website using Zola and published it using GitHub Pages"
 date = 2025-12-29
-updated = 2025-12-29
-description = "Description"
+authors = ["Hildeberto Mendonca",]
+description = "We are very excited about Zola's design and decided to build this website with it and publish it using GitHub Pages. Here is how we did it."
 +++
 
 ## Creating the site with Zola

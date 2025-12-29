@@ -1,7 +1,6 @@
 +++
 title = "Swim Meets"
-description = "Help parents and swimmers with swim meets"
-weight = 30
+description = "A service to help parents and swimmers with preparations and logistics to attend swim meets."
 
 [extra]
 canonical_url = "https://www.swimeets.com"

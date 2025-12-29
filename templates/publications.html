@@ -6,16 +6,20 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="title">
+<h1 class="display-5">
     {{ section.title }}
 </h1>
+
+<p class="lead">
+    {{ section.description }}
+</p>
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
 {% for page in section.pages %}
     <div class="col">
         <div class="card h-100">
             <div class="card-body">
-                <h5 class="card-title">{{ page.title }}</h5>
+                <h3 class="card-title">{{ page.title }}</h3>
                 <p class="card-text">{{ page.description }}</p>
                 <a href="{{ page.extra['canonical_url'] }}" target="_blank" class="card-link">Learn More</a>
             </div>
