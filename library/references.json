@@ -1,0 +1,39 @@
+{
+    "links": [
+        {
+            "title": "Bootstrap",
+            "description": "The most popular HTML, CSS, and JS library in the world.",
+            "permalink": "https://getbootstrap.com",
+            "type": "UI Library",
+            "usage": "Used in our web products and websites."
+        },
+        {
+            "title": "Django",
+            "description": "A high-level Python Web framework that encourages rapid development and clean, pragmatic design.",
+            "permalink": "https://www.djangoproject.com",
+            "type": "Web Framework",
+            "usage": "Used for developing Controlato."
+        },
+        {
+            "title": "Go Programming Language",
+            "description": "A programming language that makes it easy to build simple, reliable, and efficient software.",
+            "permalink": "https://golang.org",
+            "type": "Programming Language",
+            "usage": "Used for developing Geek Swimmers."
+        },
+        {
+            "title": "Rust Programming Language",
+            "description": "A language empowering everyone to build reliable, safe, and efficient software.",
+            "permalink": "https://www.rust-lang.org",
+            "type": "Programming Language",
+            "usage": "Used for developing the Geek Runners and Minimily Apps."
+        },
+        {
+            "title": "Zola",
+            "description": "A fast static site generator in a single binary with everything built-in.",
+            "permalink": "https://www.getzola.org",
+            "type": "Content Management",
+            "usage": "Used to build and manage this website."
+        }
+    ]
+}
