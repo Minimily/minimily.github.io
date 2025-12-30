@@ -26,5 +26,16 @@
         </div>
     </div>
 {% endfor %}
+{% for page in section.pages %}
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h3 class="card-title"><a href="{{ page.permalink | safe }}" class="nav-link">{{ page.title }}</a></h3>
+                <p class="lead">{{ page.description }}</p>
+                <a href="{{ page.path }}" class="card-link">Learn More</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 </div>
 {% endblock content %}

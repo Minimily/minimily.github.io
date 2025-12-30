@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{{ get_url(path='@/library/_index.md') }}">Library</a></li>
+    <li class="breadcrumb-item active">{{ page.title }}</li>
+{% endblock %}
+
+{% block content %}
+<h1 class="display-5">
+    {{ page.title }}
+</h1>
+
+<p class="lead">
+    {{ page.description }}
+</p>
+
+{% set data = load_data(path="content/library/references.json", format="json") %}
+<div class="list-group">
+    {% for link in data.links %}
+        <a href="{{ link.permalink }}" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ link.title }}</h5>
+            <small>{{ link.type }}</small>
+            </div>
+            <p class="mb-1">{{ link.description }}</p>
+            <small>{{ link.usage }}</small>
+        </a>
+    {% endfor %}
+</div>
+
+
+
+{% endblock content %}
