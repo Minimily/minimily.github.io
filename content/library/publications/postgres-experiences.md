@@ -6,4 +6,3 @@ weight = 30
 [extra]
 canonical_url = "https://www.minimily.com/postgres-experiences"
 +++
-
