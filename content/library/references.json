@@ -22,6 +22,13 @@
             "usage": "Used for developing Geek Swimmers."
         },
         {
+            "title": "Typst",
+            "description": "A writing system for beautiful documents. It is an alternative to LaTeX with a focus on usability and modern tooling.",
+            "permalink": "https://typst.app/universe/",
+            "type": "Content Management",
+            "usage": "Used to format some of our books."
+        },
+        {
             "title": "Rust Programming Language",
             "description": "A language empowering everyone to build reliable, safe, and efficient software.",
             "permalink": "https://www.rust-lang.org",
