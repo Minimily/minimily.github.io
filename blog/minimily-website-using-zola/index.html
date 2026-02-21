@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minimily</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #2a4762;" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Minimily</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/about/">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    
+    <li class="breadcrumb-item"><a href="https://www.minimily.com/blog/">Blog</a></li>
+    <li class="breadcrumb-item active">We Built Our Website Using Zola and Published It Using GitHub Pages</li>
+
+                </ol>
+            </nav>
+        </div>
+        <hr>
+        
+        <section class="section">
+            <div class="container">
+                
+<h1 class="display-4">
+    We Built Our Website Using Zola and Published It Using GitHub Pages
+</h1>
+<p class="lead">By <b>Hildeberto Mendonca</b>, on <b>Monday, December 29, 2025</b></p>
+
+<div class="row">
+    <div class="col">
+        <h2 id="creating-the-site-with-zola">Creating the site with Zola</h2>
+<p>The first step is to create a content project with Zola. This is important because that's what we need to test the rest of the steps. It doesn't need to be a final version of the site, but it needs to have a theme and some targeted configurations.</p>
+<p>As we mostly work in the Rust ecosystem, we build Zola from source using Cargo:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="vb"><span class="giallo-l"><span style="color: #859900;">$</span><span> cargo </span><span style="color: #268BD2;">install</span><span style="color: #859900;"> --</span><span style="color: #268BD2;">locked</span><span style="color: #859900;"> --</span><span style="color: #268BD2;">git</span><span> https://github.</span><span style="color: #268BD2;">com</span><span>/</span><span style="color: #268BD2;">getzola</span><span>/</span><span style="color: #268BD2;">zola</span></span></code></pre>
+<p>We then use it to create a new Zola site:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="vb"><span class="giallo-l"><span style="color: #859900;">$</span><span> zola init minimily.github.io</span></span></code></pre>
+<p>It will ask a few questions to get started. That's how we answered:</p>
+<ul>
+<li>What is the URL of your site? (https://example.com): https://www.minimily.com</li>
+<li>Do you want to enable Sass compilation? [Y/n]: Y</li>
+<li>Do you want to enable syntax highlighting? [y/N]: y</li>
+<li>Do you want to build a search index of the content? [y/N]: y</li>
+</ul>
+<p>But that's not a big deal because any choices made can be changed by modifying the <code>config.toml</code> file later.</p>
+<p>A minimal site was created and we can move into the directory and use the built-in server:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="vb"><span class="giallo-l"><span style="color: #859900;">$</span><span> zola serve</span></span></code></pre><h2 id="website-git-repository">Website Git Repository</h2>
+<p>Once the Zola project is working locally, we need to version it with Git and push the code to Github. We first initialize a local repository:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="vb"><span class="giallo-l"><span style="color: #859900;">$</span><span> git init</span></span>
+<span class="giallo-l"><span style="color: #859900;">$</span><span> echo </span><span style="color: #2AA198;">&quot;public/&quot;</span><span style="color: #859900;"> &gt;&gt;</span><span> .gitignore</span></span>
+<span class="giallo-l"><span style="color: #859900;">$</span><span> git </span><span style="color: #268BD2;">add</span><span> .</span></span>
+<span class="giallo-l"><span style="color: #859900;">$</span><span> git </span><span style="color: #268BD2;">commit</span><span style="color: #859900;"> -</span><span style="color: #268BD2;">m</span><span style="color: #2AA198;"> &quot;Initial commit&quot;</span></span></code></pre>
+<p>Then we create a public repository named according to this convention: "&lt;organization&gt;.github.io", which in our case is <code>minimily.github.io</code>. Now we just sync the local repo with the remote one:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="vb"><span class="giallo-l"><span style="color: #859900;">$</span><span> git remote </span><span style="color: #268BD2;">add</span><span> origin git@github.com:</span><span style="color: #268BD2;">minimily</span><span>/minimily.github.io.git</span></span>
+<span class="giallo-l"><span style="color: #859900;">$</span><span> git </span><span style="color: #268BD2;">branch</span><span style="color: #859900;"> -</span><span style="color: #268BD2;">M</span><span> main</span></span>
+<span class="giallo-l"><span style="color: #859900;">$</span><span> git </span><span style="color: #268BD2;">push</span><span style="color: #859900;"> -</span><span style="color: #268BD2;">u</span><span> origin main</span></span></code></pre><h2 id="github-pages">Github Pages</h2>
+<p>Let's create an API access token to allow the Github Action to access the website repository:</p>
+<ol>
+<li>
+<p>Click on your user icon, located on the top right, to see the user menu, then select "Settings"</p>
+</li>
+<li>
+<p>On the left menu, go all the way to the end of it and click on "Developer settings"</p>
+</li>
+<li>
+<p>On the left menu, click on "Personal access tokens", and then "Tokens (classic)"</p>
+</li>
+<li>
+<p>Click on "Generate new token" and select "Tokens (classic)"</p>
+</li>
+<li>
+<p>Write a note explaining the usage of the token, define the expiration time based on your security policy, and under the "Select scopes" section, select <code>repo / public_repo</code> permission and click "Generate token".</p>
+</li>
+<li>
+<p>Copy the generated token to be used in the sequence</p>
+</li>
+</ol>
+<p>Let's create a "Repository variable" with the token to use in the Github Action script:</p>
+<ol>
+<li>
+<p>Go to the website repository and click on "Settings"</p>
+</li>
+<li>
+<p>On the left menu, under "Security", click on "Secrets and variables" and then "Actions"</p>
+</li>
+<li>
+<p>Click on "New repository secret", then give a name to be used in the script, all written in uppercase, paste the generated token in the
+"Secret" field, and click on "Add secret".</p>
+</li>
+</ol>
+<h2 id="custom-domain">Custom Domain</h2>
+<p>Once everything works well with the Github provided URL, it is time to define a custom domain. Before making any changes to Github Pages configuration, we have to do two things:</p>
+<ol>
+<li>
+<p>Verify the ownership of the domain</p>
+</li>
+<li>
+<p>Configure the domain</p>
+</li>
+</ol>
+<p>To verify the domain:</p>
+<ol>
+<li>
+<p>Go to the Organization's Settings</p>
+</li>
+<li>
+<p>On the left menu, select "Pages"</p>
+</li>
+<li>
+<p>Click on "Add a domain", type the apex version (e.g: example.com), and click on "Add domain"</p>
+</li>
+<li>
+<p>Go to your Registrar account and add a new entry to the domain DNS:</p>
+</li>
+</ol>
+<table><thead><tr><th>Type</th><th>Name</th><th>Data</th></tr></thead><tbody>
+<tr><td>TXT</td><td>_github-pages-challenge-Minimily</td><td>36e3ae32f44c9283732661a38bce685</td></tr>
+</tbody></table>
+<ol start="5">
+<li>Go back to Github and click on "Verify"</li>
+</ol>
+<p>To configure the domain, go to your Registrar account and add the following entries to your domain DNS:</p>
+<table><thead><tr><th>Type</th><th>Name</th><th>Data</th></tr></thead><tbody>
+<tr><td>A</td><td>@</td><td>185.199.108.153</td></tr>
+<tr><td>A</td><td>@</td><td>185.199.109.153</td></tr>
+<tr><td>A</td><td>@</td><td>185.199.110.153</td></tr>
+<tr><td>A</td><td>@</td><td>185.199.111.153</td></tr>
+<tr><td>CNAME</td><td>www</td><td>minimily.github.io</td></tr>
+</tbody></table>
+
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">Table of Content</div>
+            <div class="card-body">
+                
+                    <ul>
+                    
+                        <li>
+                            <a href="https://www.minimily.com/blog/minimily-website-using-zola/#creating-the-site-with-zola">Creating the site with Zola</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://www.minimily.com/blog/minimily-website-using-zola/#website-git-repository">Website Git Repository</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://www.minimily.com/blog/minimily-website-using-zola/#github-pages">Github Pages</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://www.minimily.com/blog/minimily-website-using-zola/#custom-domain">Custom Domain</a>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.minimily.com/about/" class="nav-link">About</a>
+                </li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2025 Minimily Solutions</p>
+        </footer> 
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>
