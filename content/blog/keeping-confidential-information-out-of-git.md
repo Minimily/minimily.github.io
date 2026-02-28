@@ -11,7 +11,7 @@ The file I’m talking about is [usi4biz/resources/db-config.edn](https://github
 
 Before adding any confidential info, I renamed the file to `db-config-example.edn`:
 
-```
+```bash
 $ git mv resources/db-config.edn resources/db-config-example.edn
 $ git add resources/db-config-example.edn
 $ git commit -m "Renamed the database configuration file"
@@ -19,13 +19,13 @@ $ git commit -m "Renamed the database configuration file"
 
 Then, I copied the file and named it after the original name:
 
-```
+```bash
 $ cp resources/db-config-example.edn resources/db-config.edn
 ```
 
 I edited the new file and added the production credentials. Now, I just have to ask Git to ignore it:
 
-```
+```bash
 $ echo -e "resources/db-config.edn\n" >> .gitignore
 ```
 

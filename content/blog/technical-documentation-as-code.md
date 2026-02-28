@@ -51,13 +51,17 @@ In addition to scaling contributions, documentation as code may offer some addit
 
 Asciidoctor is a tool that recognizes Asciidoc files and converts it to HTML and other formats. It is written in Ruby, so you need Ruby installed to be able to run Asciidoctor. In my previous post, I explained [how to install Ruby for development purposes][ruby-installation]. Please, follow the instructions there and come back here to install Asciidoctor and its PDF generator:
 
-    $ gem install asciidoctor
-    $ gem install asciidoctor-pdf --pre
+```bash
+$ gem install asciidoctor
+$ gem install asciidoctor-pdf --pre
+```
 
 Once installed, the commands `asciidoctor` and `asciidoctor-pdf` become available in the terminal. Their basic parameter is the Asciidoc file:
 
-    $ asciidoctor asciidoc-file.adoc
-    $ asciidoctor-pdf asciidoc-file.adoc
+```bash
+$ asciidoctor asciidoc-file.adoc
+$ asciidoctor-pdf asciidoc-file.adoc
+```
 
 ## Documentation as Important as Code
 

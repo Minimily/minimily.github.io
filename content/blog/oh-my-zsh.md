@@ -13,23 +13,29 @@ description = "I'm yet to find a better replacement for bash than Oh-My-Zsh. Usi
 
 To start, let's install Zsh:
 
-    $ sudo apt-get install zsh
-    $ zsh --version
+```bash
+$ sudo apt-get install zsh
+$ zsh --version
+```
 
 You may see a version equal to or greater than 5.1.1. The next step is the installation of Oh-My-Zsh:
 
-    $ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```bash
+$ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```
 
 ![Oh-my-zsh installed](/images/posts/oh-my-zsh.png)
 
 After the installation script finishes, the command prompt may look different. It means Oh-My-Zsh was successfully installed. If the prompt looks too minimalistic, don't panic. Oh-My-Zsh accepts themes, and this is just the default one: **robbyrussell**. To change it, go to the home folder, edit the hidden file `.zshrc`, and change the variable `ZSH_THEME` to **bureau**, which is my favourite theme:
 
-    $ cd ~
-    $ vim .zshrc
-      ...
-      ZSH_THEME="bureau"
-      ...
-    $ source .zshrc
+```bash
+$ cd ~
+$ vim .zshrc
+  ...
+  ZSH_THEME="bureau"
+  ...
+$ source .zshrc
+```
 
 For a complete list of themes, check out the [theme catalogue][theme-catalogue]. Make sure you have some time to spare because trying new themes is addictive.
 
@@ -49,12 +55,16 @@ What I love about Oh-My-Zsh is its integration with Git, the smart auto-complete
 
 Defining and loading environment variables is also a pleasure. All we have to do is create a file in the ZSH custom folder with the bash script we want to execute:
 
-    $ cd $ZSH_CUSTOM
-    $ touch env.zsh
+```bash
+$ cd $ZSH_CUSTOM
+$ touch env.zsh
+```
 
 Open the `env.zsh` file and add the script, in this case, the definition of environment variables:
 
-    export PATH=$PATH:/usr/local/go/bin
+```bash
+$ export PATH=$PATH:/usr/local/go/bin
+```
 
 Finally, we can close the terminal window and open a new one to apply our changes.
 

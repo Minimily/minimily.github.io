@@ -56,50 +56,64 @@ here is a step by step guide to move the app to another repository and add it
 back as a submodule of [OSIS]. To avoid messing up with my programming
 environment, I've decided to do everything in a temporary folder:
 
-    $ cd ~/python/projects/osis
-    $ mkdir temp
+```bash
+$ cd ~/python/projects/osis
+$ mkdir temp
+```
 
 Then I cloned the OSIS repository inside of the temporary folder:
 
-    $ cd temp
-    $ git clone https://github.com/uclouvain/osis.git
+```bash
+$ cd temp
+$ git clone https://github.com/uclouvain/osis.git
+```
 
 To preserve the history of changes in the Internship app, I decided to start the
 new repository from a clone of OSIS:
 
-    $ git clone osis ./osis-internship
-    $ cd osis-internship
+```bash
+$ git clone osis ./osis-internship
+$ cd osis-internship
+```
 
 In my case, the default branch of OSIS is `dev`. After cloning it, the branch of
 `osis-internship` is also `dev`, so I have to create a `master` branch from
 `dev`, but you don't have to do that if you cloned the `master` branch of your
 repository:
 
-    $ git checkout -b master
+```bash
+$ git checkout -b master
+```
 
 At this point, the repository `osis-internship` is ready for the clean up. The
 intention here is to remove all files that aren't part of Internship, put the
 content of the folder `internship` in the root of the repository and remove the
 folder `internship`:
 
-    $ git rm -rf assessments/ backoffice/ assistant/ base/ dissertation/ \
-                 reference/ attribution/ cms/ doc/ osis_common/ dev-settings.py \
-                 Dockerfile __init__.py
-    $ git mv internship/* .
-    $ rm -rf internship
+```bash
+$ git rm -rf assessments/ backoffice/ assistant/ base/ dissertation/ \
+             reference/ attribution/ cms/ doc/ osis_common/ dev-settings.py \
+             Dockerfile __init__.py
+$ git mv internship/* .
+$ rm -rf internship
+```
 
 This is an important step, so I commit these changes. In this project, we put
 the number of the issue we are working on in the commit message:
 
-    $ git commit -m "INTERNSHIP-1 Removed unnecessary resources and moved the " \
-                    "content of the folder 'internship' to the root."
+```bash
+$ git commit -m "INTERNSHIP-1 Removed unnecessary resources and moved the " \
+                "content of the folder 'internship' to the root."
+```
 
 The last steps for the repository `osis-internship` is to create a new
 repository on GitHub, reset the remote origin to point to this new GitHub
 repository and push the local master branch:
 
-    $ git remote set-url origin https://github.com/uclouvain/osis-internship.git
-    $ git push origin master
+```bash
+$ git remote set-url origin https://github.com/uclouvain/osis-internship.git
+$ git push origin master
+```
 
 The repository [osis-internship] contains now only the artifacts of the
 Internship app.
@@ -108,21 +122,27 @@ Internship app.
 
 Moving back to `osis`, I removed the folder `internship` and commit the change:
 
-    $ cd ../osis
-    $ git rm -rf internship/
-    $ git commit -m "OSIS-195 Folder 'internship' removed."
+```bash
+$ cd ../osis
+$ git rm -rf internship/
+$ git commit -m "OSIS-195 Folder 'internship' removed."
+```
 
 Then I add the repository `uclouvain/osis-internship` as a submodule of `osis`:
 
-    $ git submodule add https://github.com/uclouvain/osis-internship.git \
-          ./internship
-    $ git submodule init
-    $ git submodule update
+```bash
+$ git submodule add https://github.com/uclouvain/osis-internship.git \
+      ./internship
+$ git submodule init
+$ git submodule update
+```
 
 Finally, I commit and push the change to GitHub:
 
-    $ git commit -m "OSIS-195 Submodule 'internship' added."
-    $ git push origin dev
+```bash
+$ git commit -m "OSIS-195 Submodule 'internship' added."
+$ git push origin dev
+```
 
 Voilà! The new submodule was added to the codebase of OSIS, which is now
 smaller, since a submodule is just a reference to another repository.
@@ -135,18 +155,24 @@ At this point, the submodule is ready to be developed, but I did everything in a
 temporary folder. So, I have to get back to the working environment and pull the
 latest changes:
 
-    $ cd ~/python/projects/osis/osis
-    $ git pull origin dev
+```bash
+$ cd ~/python/projects/osis/osis
+$ git pull origin dev
+```
 
 Then I setup the local submodule:
 
-    $ git submodule init
-    $ git submodule update
+```bash
+$ git submodule init
+$ git submodule update
+```
 
 This setup is necessary every time the repository is cloned. After that, the only
 command I need to remember is:
 
-    $ git submodule update
+```bash
+$ git submodule update
+```
 
 which will be useful when somebody else updates the reference to the `internship`
 repository, thus the latest modifications are not _in loco_ yet.

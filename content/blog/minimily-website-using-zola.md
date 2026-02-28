@@ -11,13 +11,13 @@ The first step is to create a content project with Zola. This is important becau
 
 As we mostly work in the Rust ecosystem, we build Zola from source using Cargo:
 
-```cmd
+```bash
 $ cargo install --locked --git https://github.com/getzola/zola
 ```
 
 We then use it to create a new Zola site:
 
-```cmd
+```bash
 $ zola init minimily.github.io
 ```
 
@@ -32,7 +32,7 @@ But that's not a big deal because any choices made can be changed by modifying t
 
 A minimal site was created and we can move into the directory and use the built-in server: 
 
-```cmd
+```bash
 $ zola serve
 ```
 
@@ -40,7 +40,7 @@ $ zola serve
 
 Once the Zola project is working locally, we need to version it with Git and push the code to Github. We first initialize a local repository:
 
-```cmd
+```bash
 $ git init
 $ echo "public/" >> .gitignore
 $ git add .
@@ -49,7 +49,7 @@ $ git commit -m "Initial commit"
 
  Then we create a public repository named according to this convention: "\<organization\>.github.io", which in our case is `minimily.github.io`. Now we just sync the local repo with the remote one:
 
-```cmd
+```bash
 $ git remote add origin git@github.com:minimily/minimily.github.io.git
 $ git branch -M main
 $ git push -u origin main
