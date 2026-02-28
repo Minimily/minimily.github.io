@@ -1,6 +1,6 @@
 +++
 title = "We Built Our Website Using Zola and Published It Using GitHub Pages"
-date = 2025-12-29
+date = 2026-01-28
 authors = ["Hildeberto Mendonca",]
 description = "We are very excited about Zola's design and decided to build this website with it and publish it using GitHub Pages. Here is how we did it."
 +++

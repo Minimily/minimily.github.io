@@ -1,6 +1,6 @@
 +++
 title = "Installing and Using Typst"
-date = 2026-02-21
+date = 2026-02-28
 authors = ["Hildeberto Mendonca",]
 description = "Typst is a modern LaTeX alternative developed in Rust. That's how we installed it."
 +++
