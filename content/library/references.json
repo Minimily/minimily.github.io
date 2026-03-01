@@ -22,11 +22,11 @@
             "usage": "Used for developing Geek Swimmers."
         },
         {
-            "title": "Typst",
-            "description": "A writing system for beautiful documents. It is an alternative to LaTeX with a focus on usability and modern tooling.",
-            "permalink": "https://typst.app/universe/",
+            "title": "My Bib",
+            "description": "A simple and elegant bibliography manager.",
+            "permalink": "https://www.mybib.com",
             "type": "Content Management",
-            "usage": "Used to format some of our books."
+            "usage": "Used to manage references for our books and articles."
         },
         {
             "title": "Rust Programming Language",
@@ -34,6 +34,13 @@
             "permalink": "https://www.rust-lang.org",
             "type": "Programming Language",
             "usage": "Used for developing the Geek Runners and Minimily Apps."
+        },
+        {
+            "title": "Typst",
+            "description": "A writing system for beautiful documents. It is an alternative to LaTeX with a focus on usability and modern tooling.",
+            "permalink": "https://typst.app/universe/",
+            "type": "Content Management",
+            "usage": "Used to format some of our books."
         },
         {
             "title": "Zola",
