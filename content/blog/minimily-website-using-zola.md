@@ -1,6 +1,6 @@
 +++
 title = "We Built Our Website Using Zola and Published It Using GitHub Pages"
-date = 2026-01-28
+date = 2025-12-28
 authors = ["Hildeberto Mendonca",]
 description = "We are very excited about Zola's design and decided to build this website with it and publish it using GitHub Pages. Here is how we did it."
 +++
@@ -28,9 +28,11 @@ It will ask a few questions to get started. That's how we answered:
 * Do you want to enable syntax highlighting? [y/N]: y
 * Do you want to build a search index of the content? [y/N]: y
 
-But that's not a big deal because any choices made can be changed by modifying the `config.toml` file later.
+But that's not a big deal because any choices made can be changed by modifying
+the `config.toml` file later.
 
-A minimal site was created and we can move into the directory and use the built-in server: 
+A minimal site was created and we can move into the directory and use the
+built-in server: 
 
 ```bash
 $ zola serve
@@ -38,7 +40,8 @@ $ zola serve
 
 ## Website Git Repository
 
-Once the Zola project is working locally, we need to version it with Git and push the code to Github. We first initialize a local repository:
+Once the Zola project is working locally, we need to version it with Git and
+push the code to Github. We first initialize a local repository:
 
 ```bash
 $ git init
@@ -47,7 +50,9 @@ $ git add .
 $ git commit -m "Initial commit"
 ```
 
- Then we create a public repository named according to this convention: "\<organization\>.github.io", which in our case is `minimily.github.io`. Now we just sync the local repo with the remote one:
+ Then we create a public repository named according to this convention:
+ "\<organization\>.github.io", which in our case is `minimily.github.io`.
+ Now we just sync the local repo with the remote one:
 
 ```bash
 $ git remote add origin git@github.com:minimily/minimily.github.io.git
@@ -57,32 +62,43 @@ $ git push -u origin main
 
 ## Github Pages
 
-Let's create an API access token to allow the Github Action to access the website repository:
+Let's create an API access token to allow the Github Action to access the
+website repository:
 
-1. Click on your user icon, located on the top right, to see the user menu, then select "Settings"
+1. Click on your user icon, located on the top right, to see the user menu,
+   then select "Settings"
 
-2. On the left menu, go all the way to the end of it and click on "Developer settings"
+2. On the left menu, go all the way to the end of it and click on
+   "Developer settings"
 
-3. On the left menu, click on "Personal access tokens", and then "Tokens (classic)"
+3. On the left menu, click on "Personal access tokens", and then
+   "Tokens (classic)"
 
 4. Click on "Generate new token" and select "Tokens (classic)"
 
-5. Write a note explaining the usage of the token, define the expiration time based on your security policy, and under the "Select scopes" section, select `repo / public_repo` permission and click "Generate token".
+5. Write a note explaining the usage of the token, define the expiration time
+   based on your security policy, and under the "Select scopes" section, select
+   `repo / public_repo` permission and click "Generate token".
 
 6. Copy the generated token to be used in the sequence
 
-Let's create a "Repository variable" with the token to use in the Github Action script:
+Let's create a "Repository variable" with the token to use in the Github Action
+script:
 
 1. Go to the website repository and click on "Settings"
 
-2. On the left menu, under "Security", click on "Secrets and variables" and then "Actions"
+2. On the left menu, under "Security", click on "Secrets and variables" and
+   then "Actions"
 
-3. Click on "New repository secret", then give a name to be used in the script, all written in uppercase, paste the generated token in the 
-"Secret" field, and click on "Add secret".
+3. Click on "New repository secret", then give a name to be used in the script,
+   all written in uppercase, paste the generated token in the "Secret" field,
+   and click on "Add secret".
 
 ## Custom Domain
 
-Once everything works well with the Github provided URL, it is time to define a custom domain. Before making any changes to Github Pages configuration, we have to do two things:
+Once everything works well with the Github provided URL, it is time to define a
+custom domain. Before making any changes to Github Pages configuration, we have
+to do two things:
 
 1. Verify the ownership of the domain
 
@@ -94,7 +110,8 @@ To verify the domain:
 
 2. On the left menu, select "Pages"
 
-3. Click on "Add a domain", type the apex version (e.g: example.com), and click on "Add domain"
+3. Click on "Add a domain", type the apex version (e.g: example.com), and click
+   on "Add domain"
 
 4. Go to your Registrar account and add a new entry to the domain DNS:
 
@@ -104,7 +121,8 @@ To verify the domain:
 
 5. Go back to Github and click on "Verify"
 
-To configure the domain, go to your Registrar account and add the following entries to your domain DNS:
+To configure the domain, go to your Registrar account and add the following
+entries to your domain DNS:
 
 | Type  | Name | Data               |
 |-------|------|--------------------|
