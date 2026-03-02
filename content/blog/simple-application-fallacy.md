@@ -1,6 +1,6 @@
 +++
 title = "The Simple Application Fallacy"
-date = 2025-06-28
+date = 2025-04-28
 authors = ["Hildeberto Mendonca",]
 description = "There is no such thing as a simple application."
 +++
@@ -61,7 +61,7 @@ administration tool, almost no work had to be done to manage the registrations.
 2 hours later everything was ready, 30 minutes more it was in production on
 [Heroku](http://heroku.com).
 
-![Flea market registration form](/images/posts/brocante-form.png)
+![Flea market registration form](/assets/images/content/brocante-form.png)
 
 As you can see, the application was simple. In the following days, the
 registrations started flowing in. Good red wine and a table of French cheeses
@@ -100,7 +100,7 @@ simple. New requirements were appearing all the time. The simple ones we made
 side by side with the organizers to get instant feedback for continuous
 delivery. The others, I had to postpone to the next opportunity.
 
-![Django Admin](/images/posts/django-admin.png)
+![Django Admin](/assets/images/content/django-admin.png)
 
 But there was a latest demanding requirement that had to be done before
 considering the project finished: printing. The organizers needed to print all
@@ -131,8 +131,6 @@ The decision to replace Django Admin will eventually come to offer a better user
 experience for organizers as well. It might imply on a lot of additional work to
 do. Since it isn't a blocking issue, it can be done slowly, through several
 iterations without disrupting the service.
-
-![Flea market registration team](/images/posts/brocante-team.jpg)
 
 We would like to thank our lovely neighbor and her colleague for this incredible
 opportunity to contribute to our community. We also learned how important

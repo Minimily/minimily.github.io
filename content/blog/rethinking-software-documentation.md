@@ -1,11 +1,11 @@
 +++
 title = "Rethinking Software Documentation"
-date = 2025-10-28
+date = 2025-08-28
 authors = ["Hildeberto Mendonca",]
 description = "Is it really worth documenting software these days?"
 +++
 
-![Flagrant of outdated code documentation](/images/posts/code_documentation.png)
+![Flagrant of outdated code documentation](/assets/images/content/code_documentation.png)
 
 I was reviewing a [pull request][pull-request] when I caught an inconsistency 
 between a code snippet and its documentation. The image below shows a new return 
@@ -109,7 +109,7 @@ great passion for [Clojure] has been faded out because of too many gaps in its
 documentation. Taking this for our apps, a good documentation might be a key 
 success factor.
 
-![Car owner manual](/images/posts/car-owner-manual.jpg)
+![Car owner manual](/assets/images/content/car-owner-manual.jpg)
 
 **My answer to an effective documentation is to write it in the format of a user
 manual**. In contrast, as the sense of usability grows with good UI practices 
@@ -130,7 +130,7 @@ privacy rules or you wanted to [delete searches & other activities][google-help]
 from your Google account. The fact that your users aren't getting the same from 
 your applications may explain why they aren't so happy using it.
 
-![Gmail and Facebook help systems](/images/posts/help-gmail-facebook.png)
+![Gmail and Facebook help systems](/assets/images/content/help-gmail-facebook.png)
 
 The user manual is the most valuable documentation - if not the only one - you
 can write for your application. These are the main reasons why:

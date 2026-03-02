@@ -1,11 +1,11 @@
 +++
 title = "Technical Documentation as Code"
-date = 2025-12-28
+date = 2025-10-28
 authors = ["Hildeberto Mendonca",]
 description = "It used to be sily, but today, documentation as code is the next cool thing."
 +++
 
-![GitHub Merge](/images/posts/documentation-as-code-writing-blog.png)
+![GitHub Merge](/assets/images/content/documentation-as-code-writing-blog.png)
 
 I was 10 years old when I first touched a computer. A micro-computer, as we used to say. It was a PC Intel 386, installed at the travel agency where my sister used to work. She operated it to write texts and spreadsheets, nothing more. It was just a modern typewriter. At that time, there was no internet but computers were not that boring because it was new, different from everything I used to play.
 
@@ -23,13 +23,13 @@ Markdown is the simplest and most popular format. I use it to write this blog an
 
 In principle, everyone who works with software has some notion of code. Programming languages have symbols to represent abstractions in a more succinct way, but Asciidoc is not considered a programming language because it is not [Turing Complete][turing-complete]. However, it is considered a markup language, just like HTML, with many symbols to hide complex abstractions. Therefore, it isn't strange for people in a technical environment to adopt a language for technical documentation.
 
-![GitHub Merge](/images/posts/documentation-as-code-asciidoc.png)
+![GitHub Merge](/assets/images/content/documentation-as-code-asciidoc.png)
 
 It is indeed time to try something new. Maybe, the use of word processors for technical documentation is the reason why the documentation is abandoned after some time. Despite their facilities, a single document cannot be edited by several people at the same time. There are ways to enable simultaneous collaboration in a single document, using Google Docs for example, but it's difficult to assess the content and the quality of the contributions when people can change any part of the document at the same time. Whom to watch? What are they doing right now? Where? If I disagree, should I modify it myself or ask them to do it? Are they going to be notified? What if contributions are not related to the version that is about to be released, but related to a future release? How to produce different versions of the same document?
 
 Documentation as code comes to the rescue! Using Asciidoc, a raw text format, writers can concentrate on content and leave presentation aspects for later. Raw text is also used by programming languages, making it the best format for versioning and sharing. The simple decision to manage documentation in a Distributed Source Control Management (SCM), like [Git] or [Mercurial], can scale contributions from the entire company or even the entire planet! This is possible because writers work on their own version of the documentation and push their contributions to a central node when they are done. Contributions are not immediately merged to the trunk. They stay in an intermediary state, a merge request (pull request, as popularized by GitHub), where discussions may continue until reaching a point of maturity for the final merge. SCMs have astonishing merging capabilities, simplifying the work to a single click of a button.
 
-![GitHub Merge](/images/posts/documentation-as-code-git-merge.png)
+![GitHub Merge](/assets/images/content/documentation-as-code-git-merge.png)
 
 In addition to scaling contributions, documentation as code may offer some additional advantages:
 
