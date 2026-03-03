@@ -7,7 +7,10 @@ description = "We are very excited about Zola's design and decided to build this
 
 ## Creating the site with Zola
 
-The first step is to create a content project with Zola. This is important because that's what we need to test the rest of the steps. It doesn't need to be a final version of the site, but it needs to have a theme and some targeted configurations.
+The first step is to create a content project with Zola. This is important
+because that's what we need to test the rest of the steps. It doesn't need to
+be a final version of the site, but it needs to have a theme and some targeted
+configurations.
 
 As we mostly work in the Rust ecosystem, we build Zola from source using Cargo:
 
