@@ -7,6 +7,8 @@ description = "I'm yet to find a better replacement for bash than Oh-My-Zsh. Usi
 
 ![Vintage command console](/assets/images/content/oh-my-zsh-vintage.jpg)
 
+## Zsh and Oh-My-Zsh
+
 [Zsh] (Z shell) defines itself as a "Shell with lots of features". Indeed, it's
 a tool to enhance the shell's capabilities. Indispensable for those working in
 Unix-based systems. To make Zsh simpler, there is [Oh-My-Zsh], a framework for
@@ -30,6 +32,8 @@ $ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/insta
 ```
 
 ![Oh-my-zsh installed](/assets/images/content/oh-my-zsh.png)
+
+## Customizing Oh-My-Zsh
 
 After the installation script finishes, the command prompt may look different.
 It means Oh-My-Zsh was successfully installed. If the prompt looks too
@@ -60,6 +64,8 @@ in action.
 
 ![Console profile config](/assets/images/content/oh-my-zsh-profile-config.png)
 
+## Git Integration
+
 What I love about Oh-My-Zsh is its integration with Git, the smart auto-complete,
 and all the information it shows in a single prompt. The theme **bureau** shows:
 
@@ -72,6 +78,8 @@ and all the information it shows in a single prompt. The theme **bureau** shows:
   when I'm in a Git repository.
 
 ![Console profile config](/assets/images/content/oh-my-zsh-bureau.png)
+
+## Environment Variables
 
 Defining and loading environment variables is also a pleasure. All we have to
 do is create a file in the ZSH custom folder with the bash script we want to
