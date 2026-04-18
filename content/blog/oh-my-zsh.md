@@ -87,6 +87,7 @@ environment variables:
 
 ```bash
 $ export PATH=$PATH:/usr/local/go/bin
+$ export PATH=$PATH:~/go/bin
 ```
 
 Finally, we can close the terminal window and open a new one to apply our changes.
