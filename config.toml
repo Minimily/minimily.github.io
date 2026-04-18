@@ -13,3 +13,4 @@ theme = "solarized-light"
 
 [extra]
 # Put all your custom variables here
+images_default_size = 1000
