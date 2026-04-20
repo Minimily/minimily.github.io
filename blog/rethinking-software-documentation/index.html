@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minimily</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #2a4762;" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Minimily</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/about/">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    
+    <li class="breadcrumb-item"><a href="https://www.minimily.com/blog/">Blog</a></li>
+    <li class="breadcrumb-item active">Rethinking Software Documentation</li>
+
+                </ol>
+            </nav>
+        </div>
+        <hr>
+        
+        <section class="section">
+            <div class="container">
+                
+<h1 class="display-4">
+    Rethinking Software Documentation
+</h1>
+<p class="lead">By <b>Hildeberto Mendonca</b>, on <b>Thursday, August 28, 2025</b></p>
+
+<div class="row">
+    <div class="col-8">
+        <p><img src="/assets/images/content/code_documentation.png" alt="Flagrant of outdated code documentation" /></p>
+<p>I was reviewing a <a rel="external" href="https://github.com/uclouvain/osis/pull/2656/files">pull request</a> when I caught an inconsistency
+between a code snippet and its documentation. The image below shows a new return
+case added to the function <code>is_program_manager</code>, but the developer didn't update
+the documentation accordingly. So, the text still explains the previous return
+logic.</p>
+<span id="continue-reading"></span>
+<p>Can the developer be held accountable for this omission even when the code runs
+as expected and passes all tests? In the role of code reviewer I understood that
+the names used to identify functions and variables were sufficiently clear to
+make the code readable. No documentation was actually needed. So, I didn't ask
+the programmer to fix the documentation. It would mean an additional overhead to
+the code reviewing process for something that doesn't cause compilation neither
+runtime errors.</p>
+<p>On the other hand, there are some cases where it's difficult to represent the
+business into code. As an example, we have <a rel="external" href="https://github.com/uclouvain/osis-internship/blob/master/utils/student_assignment/solver.py#L87">an algorithm</a>
+that assigns students to internships based on their individual constraints. The
+documentation is necessary because the code is not trivial.</p>
+<p>Code documentation is sometimes useful, but it comes too late, when the code is
+already written. There is another kind of documentation that comes first: the
+specification. This term makes people scary these days because it is associated
+with old fashion software processes, but it is just another name for use cases,
+user stories, and other fancy synonyms created recently. The point is: The
+documentation written earlier is a guidance to write code that effectively
+serves the real intent, minimizing the frustration of developing something that
+isn't useful for the users.</p>
+<h2 id="misunderstanding-agility">Misunderstanding Agility</h2>
+<p>In the winter of 2001, seventeen people met in a ski resort in Utah to try to
+find a common ground for software development. They came up with the
+<a rel="external" href="http://agilemanifesto.org">agile manifesto</a>. The extracted statement below is particulary
+interesting for the purpose of this post:</p>
+<blockquote>
+<p>"Working software over comprehensive documentation."</p>
+</blockquote>
+<p>As every philosophical text, this statement is also subject to antagonic
+interpretations. In my understanding, early documentation doesn't have to be
+comprehensive. Done iteratively, it may initially have just enough content
+to enable a minimal viable product and then progressively covering more and more
+features as the project advances.</p>
+<p>However, in recent talks to some consultants, I realized they interpreted
+"comprehensive documentation" as a problem to be solved with "no documentation
+at all". The disseminated approach is to be limited by post-its or index cards
+in an informal language description. Once they are implemented, they can be
+completely discarded, no strings attached. The documentation is transient and
+summarized in a few sentences. If not registered in an issue tracker, they are
+lost forever.</p>
+<p>That's sad. <strong>Discarding real useful work disturbs me. Unless the users change
+their minds about the requirements, a major architectural flaw is discovered,
+or something can be substantially improved, there is no reason to throw
+something away</strong> that frequently. This is waste and every industry avoids it.
+People's work must be constructive, the results must be useful and valuable. But
+how can this principle be applied on software development?</p>
+<p>Actually, requirements have been often discarded since the waterfall age. It
+wasn't discarded in the sense of throwing away, but in the sense of abandonment.
+Architecture documents, use case specifications, project guidelines, deployment
+models, they were created but seldom updated. It was very expensive to keep
+documentation and implementation synchronized. Aparently, this problem hasn't
+been solved yet by any agile methodology. There is indeed an opportunity of
+rethinking - not reinventing - how documentation should be produced to achieve
+durability and real added value.</p>
+<h2 id="the-user-manual">The User Manual</h2>
+<p>I have been exposed to the inspiring blog post of Tom Preston-Werner: <a rel="external" href="http://tom.preston-werner.com/2010/08/23/readme-driven-development.html">"Readme
+Driven Development"</a>. For him, it doesn't matter if you follow TDD, BDD, XP
+or SCRUM, because at the end "a perfect implementation of the wrong
+specification is worthless". He suggests to write the README file first as an
+essential condition to write good software. We share a fundamental belief that
+<strong>when documenting, we are giving ourselves "a chance to think through the
+project without the overhead of having to change code every time we change our
+minds"</strong>. Tom is the co-founder of <a rel="external" href="https://github.com">GitHub</a>. So, it isn't strange that README
+files play an important role in the presentation of GitHub projects. However, a
+README file is not designed to grow as the application grows because the entire
+content is put in a single file. We should limit its content to the point where
+it is still readable and practical.</p>
+<p>The problem with detailed documentation in general is the lack of readers. With
+a boring writing style and only a few people as audience, a document will hardly
+be updated as frequently as needed. As the software evolves, only verbal, visual
+(mock-ups, diagrams, templates, etc.) and short textual communication (emails,
+issue trackers) prevail. The rest remains forgotten into <em>dusty</em> folders.</p>
+<p>We should rethink documentation to become something that people actually read,
+enjoy, learn and share. Where errors and obsolescence are considered as serious
+as bugs in software. It happens that documentation might be the primary reason
+of software success. Classical examples are programming languages, frameworks
+and platforms (software to build software) where the more documentation is
+available the higher is the probability of adoption. Not so long ago, we decided
+to adopt <a rel="external" href="https://www.djangoproject.com">Django</a> for business applications because of its extensive
+documentation, which helps to reduce the learning curve. On the other hand, my
+great passion for <a rel="external" href="https://clojure.org">Clojure</a> has been faded out because of too many gaps in its
+documentation. Taking this for our apps, a good documentation might be a key
+success factor.</p>
+<p><img src="/assets/images/content/car-owner-manual.jpg" alt="Car owner manual" /></p>
+<p><strong>My answer to an effective documentation is to write it in the format of a user
+manual</strong>. In contrast, as the sense of usability grows with good UI practices
+supported by modern frameworks, the idea of writing a user manual seems to be
+absurd, until the user asks for one. Take your car as an example. You are so
+used to drive cars that when you took your current one for the first time, it
+just happened naturally. You didn't even touch the owner's manual. But in the
+event of the engine's red indicator lighting up, guess what comes first in your
+mind? Yes, that heavy manual. You want to know the implications of continuing
+driving with that light on and how much time you have before sending the car to
+maintenance.</p>
+<p>You may say cars are different, old fashioned stuff, that it isn't the same as
+software. Well, not really. What your browser, your favorite text editor, Gmail,
+Facebook and Google have in common ? They all have a help system, which is just
+another name for user manual. You never noticed it until Facebook changed its
+privacy rules or you wanted to <a rel="external" href="https://support.google.com/websearch/answer/465?hl=en-BE&amp;ref_topic=3378866">delete searches &amp; other activities</a>
+from your Google account. The fact that your users aren't getting the same from
+your applications may explain why they aren't so happy using it.</p>
+<p><img src="/assets/images/content/help-gmail-facebook.png" alt="Gmail and Facebook help systems" /></p>
+<p>The user manual is the most valuable documentation - if not the only one - you
+can write for your application. These are the main reasons why:</p>
+<ul>
+<li>
+<p>The text is not disposable because it has too many readers, or potential
+readers, that will demand it to be up to date.</p>
+</li>
+<li>
+<p>Writing a user oriented document will push you to think more about the user
+experience and develop better user interfaces.</p>
+</li>
+<li>
+<p>If written at the beginning as a way to elicit requirements, it will be also
+read by analysts, programmers, support analysts, project managers, product
+owners, and real users.</p>
+</li>
+<li>
+<p>Everybody around a single document, providing feedback, makes it continuously
+improved and updated.</p>
+</li>
+<li>
+<p>A user manual is the best guide to write <a rel="external" href="http://www.seleniumhq.org">automated functional tests</a>.
+When all tests pass then the user manual is also correct.</p>
+</li>
+</ul>
+<p><strong>Writing is a thinking exercise</strong>. If you want to think a lot about a subject,
+write about it. The more you think the more consistent the idea will become. I
+started drafting the text you are reading right now about three months ago.
+Every time I visited it I rephrased something, replaced paragraphs by entirely
+new ones, and changed the title countless times. The more I think the higher is
+the chance of getting it right, but I had to stop at some point so I could
+release it. The minute after the release, as I kept thinking and re-reading it,
+a word, a phrase or a paragraph became obsolete. Better thoughts may be
+published in a future post if I insist on the subject.</p>
+<p>Now, consider that the subject is software. Writing about it will make you think
+a lot and be careful about its consistency. You don't have to write everything
+at first, but you can do just enough to move forward. If you don't write
+anything, you will forget details, consistency is never stable, everything
+remains in the head of people directly involved, but for a short period of time.
+Every time you have to explain something you have to remember everything.
+Instead of writing several different documents, you can write a single one: the
+user manual, which is useful for everybody. Consequently, you will have several
+readers who will help you to think about the same software, over and over again,
+without even bothering you.</p>
+<p>I've been busy <a rel="external" href="https://github.com/uclouvain/osis-internship">maintaining a software</a> that was considered
+more problematic than useful. They considered rewriting it several times. When I
+accepted the challenge I intuitively asked for any documentation available.
+Found nothing I could rely on. I spent several days reading the code to
+understand it. I wrote down every understanding I extracted from the code. The
+text evolved into a <a rel="external" href="https://uclouvain.github.io/osis-internship/">user manual</a>, useful for myself and for
+anybody else who might get the project after me. (S)he will need just a few
+hours to understand the whole picture and move on from where I stopped. I hope
+that person reads this post and gets conscious of the importance of maintaining
+the user manual the same way code is maintained.</p>
+
+    </div>
+    <div class="col-4">
+        
+            <div class="card">
+                <div class="card-header">Table of Content</div>
+                <div class="card-body">
+                    
+                        <ul>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/rethinking-software-documentation/#misunderstanding-agility">Misunderstanding Agility</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/rethinking-software-documentation/#the-user-manual">The User Manual</a>
+                                
+                            </li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.minimily.com/about/" class="nav-link">About</a>
+                </li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2025 Minimily Solutions</p>
+        </footer> 
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>

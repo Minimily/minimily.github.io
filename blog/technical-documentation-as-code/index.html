@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minimily</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #2a4762;" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Minimily</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/about/">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    
+    <li class="breadcrumb-item"><a href="https://www.minimily.com/blog/">Blog</a></li>
+    <li class="breadcrumb-item active">Technical Documentation as Code</li>
+
+                </ol>
+            </nav>
+        </div>
+        <hr>
+        
+        <section class="section">
+            <div class="container">
+                
+<h1 class="display-4">
+    Technical Documentation as Code
+</h1>
+<p class="lead">By <b>Hildeberto Mendonca</b>, on <b>Tuesday, October 28, 2025</b></p>
+
+<div class="row">
+    <div class="col-8">
+        <p><img src="/assets/images/content/documentation-as-code-writing-blog.png" alt="GitHub Merge" /></p>
+<p>I was 10 years old when I first touched a computer. A micro-computer, as we
+used to say. It was a PC Intel 386, installed at the travel agency where my
+sister used to work. She operated it to write texts and spreadsheets, nothing
+more. It was just a modern typewriter. At that time, there was no internet but
+computers were not that boring because it was new, different from everything
+I used to play.</p>
+<span id="continue-reading"></span>
+<p>I was there when she was not using it, fascinated with a text processor called
+Word Perfect, from Corel. In my opinion as a curious kid, it was better than
+Microsoft Word. My favorite task was typing touristic brochures into Word
+Perfect documents, just for the sake of typing. No games, no calculations, just
+text. I saved my files in a flop disk my sister gave me, put it into my
+backpack and headed home with my parents. Then I was back the next day to
+continue typing during the hype of the addiction.</p>
+<p>At that time, most of personal and small business computing use was for writing
+with the primary intention to print the document and do some off-line work with
+it. Nowadays, the enormous amount of content published on the internet shows
+that printing is not a priority anymore. Most documents are less complex than
+before, with less formatting and variations to make them more accessible for a
+larger audience. The basic text formatting of HTML, far simpler than Microsoft
+Word, has shown to be effective to scale reading.</p>
+<p>HTML-based content has been widely accepted and new technologies have been
+created, such as <a rel="external" href="https://daringfireball.net/projects/markdown/">Markdown</a>, <a rel="external" href="http://asciidoc.org">Asciidoc</a>, <a rel="external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>, and others, to
+rival with traditional office suites. These technologies are based on plain
+text with a minimalist syntax, easy to memorize. Their plain text model has
+been proven viable with the success of LaTex in the scientific world for
+decades. This kind of format is largely used for technical writing these days.</p>
+<p>Markdown is the simplest and most popular format. I use it to write this blog
+and the experience has been better than my previous Wordpress version. Now, my
+texts are cleaner, well formatted and standardized after days migrating the
+messy content managed by Wordpress to the elegant and efficient <a href="/2018/03/installing-using-jekyll-linux.html">Jekyll</a>. On
+the other hand, the simplicity of Markdown is also its biggest weakness. It
+doesn't cover all formatting possibilities of HTML. If you need something more
+elaborate, you have to embed HTML into your Markdown content. Technical people
+are ok with that, but HTML is too verbose and confusing for everyone else,
+which makes Asciidoc and reStructuredText more suitable options. They all have
+the HTML text formatting covered. I would personally pick Asciidoc because
+reStructuredText is very extensible to the point where the text and the
+extensions become highly coupled and we are forced to distribute both to have
+the text properly rendered by multiple writers.</p>
+<h2 id="asciidoc-for-technical-documentation">Asciidoc for Technical Documentation</h2>
+<p>In principle, everyone who works with software has some notion of code.
+Programming languages have symbols to represent abstractions in a more succinct
+way, but Asciidoc is not considered a programming language because it is not
+<a rel="external" href="https://en.wikipedia.org/wiki/Turing_completeness">Turing Complete</a>. However, it is considered a markup language,
+just like HTML, with many symbols to hide complex abstractions. Therefore, it
+isn't strange for people in a technical environment to adopt a language for
+technical documentation.</p>
+<p><img src="/assets/images/content/documentation-as-code-asciidoc.png" alt="GitHub Merge" /></p>
+<p>It is indeed time to try something new. Maybe, the use of word processors for
+technical documentation is the reason why the documentation is abandoned after
+some time. Despite their facilities, a single document cannot be edited by
+several people at the same time. There are ways to enable simultaneous
+collaboration in a single document, using Google Docs for example, but it's
+difficult to assess the content and the quality of the contributions when
+people can change any part of the document at the same time. Whom to watch?
+What are they doing right now? Where? If I disagree, should I modify it myself
+or ask them to do it? Are they going to be notified? What if contributions are
+not related to the version that is about to be released, but related to a
+future release? How to produce different versions of the same document?</p>
+<p>Documentation as code comes to the rescue! Using Asciidoc, a raw text format,
+writers can concentrate on content and leave presentation aspects for later.
+Raw text is also used by programming languages, making it the best format for
+versioning and sharing. The simple decision to manage documentation in a
+Distributed Source Control Management (SCM), like <a rel="external" href="https://git-scm.com">Git</a> or <a rel="external" href="https://www.mercurial-scm.org">Mercurial</a>, can
+scale contributions from the entire company or even the entire planet! This is
+possible because writers work on their own version of the documentation and
+push their contributions to a central node when they are done. Contributions
+are not immediately merged to the trunk. They stay in an intermediary state,
+a merge request (pull request, as popularized by GitHub), where discussions may
+continue until reaching a point of maturity for the final merge. SCMs have
+astonishing merging capabilities, simplifying the work to a single click of a
+button.</p>
+<p><img src="/assets/images/content/documentation-as-code-git-merge.png" alt="GitHub Merge" /></p>
+<p>In addition to scaling contributions, documentation as code may offer some
+additional advantages:</p>
+<ul>
+<li>
+<p>It detaches the documentation from tools, allowing you to chose the best set
+of tools to support your workflow.</p>
+</li>
+<li>
+<p>The large majority of tools are free and open source, considerably reducing
+the cost of documentation.</p>
+</li>
+<li>
+<p>Using raw text instead of binary, allows easy visualization of changes at
+the character level.</p>
+</li>
+<li>
+<p>It is always possible to know who changed what and when.</p>
+</li>
+<li>
+<p>It is possible to create branches aligned with the releases of a product, so
+you don't deliver a documentation with more features than the recently
+released product just because you decided to advance the documentation of
+the upcoming release.</p>
+</li>
+<li>
+<p>By using Asciidoc, a single content can be exported to several formats such
+as PDF, HTML, ePub, mobi and others.</p>
+</li>
+<li>
+<p>Asciidoc also allows composition of files to form a document. This way you
+can share content among different documents, remove parts for a simpler
+version of the product, and many other possibilities.</p>
+</li>
+</ul>
+<h2 id="installing-and-using-asciidoctor">Installing and Using Asciidoctor</h2>
+<p>Asciidoctor is a tool that recognizes Asciidoc files and converts it to HTML
+and other formats. It is written in Ruby, so you need Ruby installed to be able
+to run Asciidoctor. In my previous post, I explained
+<a href="/2018/03/installing-using-jekyll-linux.html#installing-ruby-with-rbenv">how to install Ruby for development purposes</a>. Please,
+follow the instructions there and come back here to install Asciidoctor and its
+PDF generator:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> gem install asciidoctor</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> gem install asciidoctor-pdf</span><span style="color: #CB4B16;"> --pre</span></span></code></pre>
+<p>Once installed, the commands <code>asciidoctor</code> and <code>asciidoctor-pdf</code> become
+available in the terminal. Their basic parameter is the Asciidoc file:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> asciidoctor asciidoc-file.adoc</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> asciidoctor-pdf asciidoc-file.adoc</span></span></code></pre><h2 id="documentation-as-important-as-code">Documentation as Important as Code</h2>
+<p>Asciidoc has been used in the <a rel="external" href="https://github.com/uclouvain/osis">OSIS</a> Project since the beginning. It was well
+accepted by the team and a great deal of content has been produced so far. The
+main challenge we had was teaching distributed version control to non-technical
+people. It is still a challenge for some people, but it's improving gradually.</p>
+<p>I personally plan to document as code using Asciidoc in all my future projects
+and evangelize the concept from now on. After OSIS, I had the pleasure to
+document the OSIS-Internship module and it was very positive for the success of
+the project. It was hard at the beginning to produce the initial documentation
+because the module didn't have any documentation at all, but after the first
+complete draft, small additions were actually easy to do.</p>
+<p>My ultimate challenge is to convince other developers that documentation is as
+important as the code itself, because it ensures long term maintenance and the
+longevity of the project. But this is a subject for another time.</p>
+
+    </div>
+    <div class="col-4">
+        
+            <div class="card">
+                <div class="card-header">Table of Content</div>
+                <div class="card-body">
+                    
+                        <ul>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/technical-documentation-as-code/#asciidoc-for-technical-documentation">Asciidoc for Technical Documentation</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/technical-documentation-as-code/#installing-and-using-asciidoctor">Installing and Using Asciidoctor</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/technical-documentation-as-code/#documentation-as-important-as-code">Documentation as Important as Code</a>
+                                
+                            </li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.minimily.com/about/" class="nav-link">About</a>
+                </li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2025 Minimily Solutions</p>
+        </footer> 
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>

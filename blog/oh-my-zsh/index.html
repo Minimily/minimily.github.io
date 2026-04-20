@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minimily</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #2a4762;" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Minimily</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/about/">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    
+    <li class="breadcrumb-item"><a href="https://www.minimily.com/blog/">Blog</a></li>
+    <li class="breadcrumb-item active">Installing Oh-My-Zsh on Debian-Based Systems</li>
+
+                </ol>
+            </nav>
+        </div>
+        <hr>
+        
+        <section class="section">
+            <div class="container">
+                
+<h1 class="display-4">
+    Installing Oh-My-Zsh on Debian-Based Systems
+</h1>
+<p class="lead">By <b>Hildeberto Mendonca</b>, on <b>Friday, February 28, 2025</b></p>
+
+<div class="row">
+    <div class="col-8">
+        <p><img src="/assets/images/content/oh-my-zsh-vintage.jpg" alt="Vintage command console" /></p>
+<h2 id="zsh-and-oh-my-zsh">Zsh and Oh-My-Zsh</h2>
+<p><a rel="external" href="http://www.zsh.org">Zsh</a> (Z shell) defines itself as a "Shell with lots of features". Indeed, it's
+a tool to enhance the shell's capabilities. Indispensable for those working in
+Unix-based systems. To make Zsh simpler, there is <a rel="external" href="http://ohmyz.sh">Oh-My-Zsh</a>, a framework for
+managing Zsh configuration using the theme concept. The goal of this post is to
+get you all set with Oh-My-Zsh on your Debian Linux system.</p>
+<span id="continue-reading"></span>
+<p>To start, let's install Zsh:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo apt-get install zsh</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> zsh</span><span style="color: #CB4B16;"> --version</span></span></code></pre>
+<p>You may see a version equal to or greater than 5.1.1. The next step is the
+installation of Oh-My-Zsh:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sh</span><span style="color: #CB4B16;"> -c</span><span style="color: #2AA198;"> &quot;$(</span><span style="color: #268BD2;">wget</span><span style="color: #2AA198;"> https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh</span><span style="color: #CB4B16;"> -O</span><span style="color: #2AA198;"> -)&quot;</span></span></code></pre>
+<p><img src="/assets/images/content/oh-my-zsh.png" alt="Oh-my-zsh installed" /></p>
+<h2 id="customizing-oh-my-zsh">Customizing Oh-My-Zsh</h2>
+<p>After the installation script finishes, the command prompt may look different.
+It means Oh-My-Zsh was successfully installed. If the prompt looks too
+minimalistic, don't panic. Oh-My-Zsh accepts themes, and this is just the
+default one: <strong>robbyrussell</strong>. To change it, go to the home folder, edit the
+hidden file <code>.zshrc</code>, and change the variable <code>ZSH_THEME</code> to <strong>bureau</strong>, which
+is my favourite theme:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> cd ~</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> vim .zshrc</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">  ...</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">  ZSH_THEME</span><span style="color: #859900;">=</span><span style="color: #2AA198;">&quot;bureau&quot;</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">  ...</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> source .zshrc</span></span></code></pre>
+<p>For a complete list of themes, check out the [theme catalogue][theme-catalogue].
+Make sure you have some time to spare because trying new themes is addictive.</p>
+<p>Oh-My-Zsh won't start by default. To activate it, we have to type <code>$ zsh</code> every
+time we open a new terminal. If you are convinced that Oh-My-Zsh is your thing,
+you can make sure it is always available. On the terminal window, select
+<strong>Edit &gt; Profile Preferences</strong> in the menu. In the new window, go to the tab
+<strong>Title and Command</strong>, select the field <strong>Run a custom command instead of my shell</strong>
+and type <code>zsh</code> in the <strong>Custom command</strong> field. Restart the terminal to see it
+in action.</p>
+<p><img src="/assets/images/content/oh-my-zsh-profile-config.png" alt="Console profile config" /></p>
+<h2 id="git-integration">Git Integration</h2>
+<p>What I love about Oh-My-Zsh is its integration with Git, the smart auto-complete,
+and all the information it shows in a single prompt. The theme <strong>bureau</strong> shows:</p>
+<ul>
+<li>
+<p><strong>my location</strong>, so I don't have to type <code>pwd</code> all the time</p>
+</li>
+<li>
+<p><strong>the time</strong>, which is useful to know how long the last operation took by
+comparing the time of the subsequent prompt</p>
+</li>
+<li>
+<p><strong>the current branch</strong> and its <strong>state</strong> with a rich set of colourful symbols,
+when I'm in a Git repository.</p>
+</li>
+</ul>
+<p><img src="/assets/images/content/oh-my-zsh-bureau.png" alt="Console profile config" /></p>
+<h2 id="environment-variables">Environment Variables</h2>
+<p>Defining and loading environment variables is also a pleasure. All we have to
+do is create a file in the ZSH custom folder with the bash script we want to
+execute:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> cd</span><span style="color: #268BD2;"> $ZSH_CUSTOM</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> touch env.zsh</span></span></code></pre>
+<p>Open the <code>env.zsh</code> file and add the script, in this case, the definition of
+environment variables:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> export PATH=</span><span style="color: #268BD2;">$PATH</span><span style="color: #2AA198;">:/usr/local/go/bin</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> export PATH=</span><span style="color: #268BD2;">$PATH</span><span style="color: #2AA198;">:~/go/bin</span></span></code></pre>
+<p>Finally, we can close the terminal window and open a new one to apply our changes.</p>
+<p>Please comment below with your questions, thoughts, and which theme suits you best.</p>
+
+    </div>
+    <div class="col-4">
+        
+            <div class="card">
+                <div class="card-header">Table of Content</div>
+                <div class="card-body">
+                    
+                        <ul>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/oh-my-zsh/#zsh-and-oh-my-zsh">Zsh and Oh-My-Zsh</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/oh-my-zsh/#customizing-oh-my-zsh">Customizing Oh-My-Zsh</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/oh-my-zsh/#git-integration">Git Integration</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/oh-my-zsh/#environment-variables">Environment Variables</a>
+                                
+                            </li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.minimily.com/about/" class="nav-link">About</a>
+                </li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2025 Minimily Solutions</p>
+        </footer> 
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>
