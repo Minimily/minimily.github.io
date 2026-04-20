@@ -18,9 +18,9 @@ applications. They could even be activated or deactivated at runtime, which mean
 the entire codebase is not necessarily running in production. This architecture
 is so flexible that the IT department of the university decided to stimulate
 other departments, in need of a business application, to develop apps for OSIS,
-instead of other heterogeneous choices. We kindly called them "Satellite Apps" in the
-"OSIS Constellation". The strategy worked. Several apps were
-developed by different teams.
+instead of other heterogeneous choices. We kindly called them "Satellite Apps"
+in the "OSIS Constellation". The strategy worked. Several apps were developed
+by different teams.
 
 <!-- more -->
 
@@ -41,13 +41,13 @@ working with submodule for a while and we had no major issues up to this point.
 
 ![GIT submodule](/assets/images/content/github-repo-submodule.png)
 
-Others might also have argued that it was time for micro services. Well, we didn't see it as
-an advantage just yet because we might reduce the codebase but we would, at the
-same time, complicate the architecture with an additional web service layer,
-additional security measures and more configurations. We didn't even have the
-excuse of a performance issue, so the added value was obviously not there yet.
-But when the time comes, what we have done will certainly simplify the
-transition to micro services.
+Others might also have argued that it was time for micro services. Well, we
+didn't see it as an advantage just yet because we might reduce the codebase but
+we would, at the same time, complicate the architecture with an additional web
+service layer, additional security measures and more configurations. We didn't
+even have the excuse of a performance issue, so the added value was obviously
+not there yet. But when the time comes, what we have done will certainly
+simplify the transition to micro services.
 
 ## Moving the Internship App to a New Repository
 
@@ -78,8 +78,8 @@ $ cd osis-internship
 
 The default branch of OSIS was `dev`. After cloning it, the branch of
 `osis-internship` was also `dev`, so we had to create a `master` branch from
-`dev`, but you didn't have to do that if you had cloned the `master` branch of your
-repository:
+`dev`, but you didn't have to do that if you had cloned the `master` branch of
+your repository:
 
 ```bash
 $ git checkout -b master
@@ -98,8 +98,8 @@ $ git mv internship/* .
 $ rm -rf internship
 ```
 
-This was an important step, so we committed these changes. In this project, we put
-the number of the issue we were working on in the commit message:
+This was an important step, so we committed these changes. In this project, we
+put the number of the issue we were working on in the commit message:
 
 ```bash
 $ git commit -m "INTERNSHIP-1 Removed unnecessary resources and moved the " \
@@ -120,7 +120,8 @@ Internship app.
 
 ## Creating the Submodule in the OSIS Repository
 
-Moving back to `osis`, we removed the folder `internship` and committed the change:
+Moving back to `osis`, we removed the folder `internship` and committed the
+change:
 
 ```bash
 $ cd ../osis
@@ -128,7 +129,8 @@ $ git rm -rf internship/
 $ git commit -m "OSIS-195 Folder 'internship' removed."
 ```
 
-Then we added the repository `uclouvain/osis-internship` as a submodule of `osis`:
+Then we added the repository `uclouvain/osis-internship` as a submodule of
+`osis`:
 
 ```bash
 $ git submodule add https://github.com/uclouvain/osis-internship.git \
@@ -151,9 +153,9 @@ smaller, since a submodule is just a reference to another repository.
 
 ## How to Develop in the New Submodule
 
-At that point, the submodule was ready to be developed, but we had done everything in a
-temporary folder. So, we had to get back to the working environment and pull the
-latest changes:
+At that point, the submodule was ready to be developed, but we had done
+everything in a temporary folder. So, we had to get back to the working
+environment and pull the latest changes:
 
 ```bash
 $ cd ~/python/projects/osis/osis
@@ -167,32 +169,32 @@ $ git submodule init
 $ git submodule update
 ```
 
-This setup was necessary every time the repository was cloned. After that, the only
-command we needed to remember was:
+This setup was necessary every time the repository was cloned. After that, the
+only command we needed to remember was:
 
 ```bash
 $ git submodule update
 ```
 
-which would be useful when somebody else updated the reference to the `internship`
-repository, thus the latest modifications were not _in loco_ yet.
+which would be useful when somebody else updated the reference to the 
+`internship` repository, thus the latest modifications were not _in loco_ yet.
 
 Using `submodule` we had a repository inside another one. So, when we were at
 the `osis` repository and typed `git status` we saw the active branch was `dev`.
 But when we entered the submodule `internship` and typed `git status`, we saw
 the active branch was `master`. These repositories had different remote origins
-(check with `git remote -v`), thus when we committed and pushed changes they went to
-their respective repositories. Therefore, developing `osis-internship` consisted
-of pulling, branching, committing, pushing and everything else in the submodule
-`internship`.
+(check with `git remote -v`), thus when we committed and pushed changes they
+went to their respective repositories. Therefore, developing `osis-internship`
+consisted of pulling, branching, committing, pushing and everything else in the
+submodule `internship`.
 
 We would add, in conclusion, that another important motivation to move an
 application to another repository was to have an independent lifecycle from the
 rest of the system. This was particularly important in applications developed by
 different teams under distinct context and subordination. Imagine how difficult
 it was to coordinate all parties to have a synchronized release under short
-iteration cycles. Using submodules, the application could evolve according to the
-pace of its team and be released without interfering on other projects'
+iteration cycles. Using submodules, the application could evolve according to
+the pace of its team and be released without interfering on other projects'
 deadlines.
 
 [Django]: https://www.djangoproject.org
