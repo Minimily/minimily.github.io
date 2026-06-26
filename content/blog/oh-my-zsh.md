@@ -17,10 +17,11 @@ get you all set with Oh-My-Zsh on your Debian Linux system.
 
 <!-- more -->
 
-To start, let's install Zsh:
+To start, let's install **Git**, used by the script that install and updates
+Oh-My-Zsh, and **Zsh**:
 
 ```bash
-$ sudo apt-get install zsh
+$ sudo apt-get install git zsh
 $ zsh --version
 ```
 
