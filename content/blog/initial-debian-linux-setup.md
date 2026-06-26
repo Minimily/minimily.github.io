@@ -5,7 +5,7 @@ authors = ["Hildeberto Mendonca",]
 description = "This is all a programmer needs to build software in a minimalist way."
 +++
 
-## sudo Command
+### sudo Command
 
 Ubuntu and its derivatives already add the initial user in the SUDO group, but
 Debian requires us to explicitly add the user to the sudo group. This is how it is done: 
