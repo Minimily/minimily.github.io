@@ -10,10 +10,10 @@ description = "This is all a programmer needs to build software in a minimalist 
 Ubuntu and its derivatives already add the initial user in the SUDO group, but
 Debian requires us to explicitly add the user to the sudo group. This is how it is done: 
 
-```
+```bash
 $ su -
-# usermod -aG sudo username
-# exit
+  # usermod -aG sudo username
+  # exit
 ```
 
 Logout and login to the changes take effect.
@@ -22,45 +22,55 @@ Logout and login to the changes take effect.
 
 Dependency:
 
-```
+```bash
 $ sudo apt install python3-gpg
 $ sudo apt install libappindicator3-1
 ```
 
 ### Install Git
 
-```
+```bash
 $ sudo apt install git
 ```
 
 ### Install zsh and oh-my-zsh
 
-```
+```bash
 $ sudo apt install zsh
 $ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
 ### Install VSCode and Zed
 
-```
+VS Code still have more features and more support for different technologies.
+That's why it is still required. So, here is how I installed it:
+
+```bash
 $ cat /proc/sys/fs/inotify/max_user_watches
 $ sudo vi /etc/sysctl.conf 
       fs.inotify.max_user_watches=524288
 $ sudo sysctl --system
 ```
 
+Zed is slowly becoming my favorite IDE, specially because of its performance
+and usage of the GPU. The installation is easier:
+
+```bash
+curl -f https://zed.dev/install.sh | sh
+```
+
 ### Install Rust
 
 First, install the basic requirements for `rustup`:
 
-```
+```bash
 $ sudo apt install build-essential
 $ sudo apt install curl
 ```
 
 Now, intall `rustup`, the tool that manages Rust installation:
 
-```
+```bash
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
   This will download and install the official compiler for the Rust
@@ -101,14 +111,14 @@ $ cargo --version
 
 From time to time, update your Rust installation:
 
-```
+```bash
 $ rustup update
 $ rustup toolchain install stable
 ```
 
 ### Install Go
 
-```
+```bash
 $ sudo rm -rf /usr/local/go
 $ sudo tar -C /usr/local -xzf go1.26.2.linux-amd64.tar.gz
 [reopen]
@@ -117,13 +127,13 @@ $ go version
 
 ### Install PostgreSQL
 
-```
+```bash
 $ sudo apt install postgresql
 ```
 
 ### Install Claude Code
 
-```
+```bash
 $ curl -fsSL https://claude.ai/install.sh | bash
 $ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 ```
