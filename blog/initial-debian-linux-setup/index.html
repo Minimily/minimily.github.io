@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minimily</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #2a4762;" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Minimily</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/about/">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    
+    <li class="breadcrumb-item"><a href="https://www.minimily.com/blog/">Blog</a></li>
+    <li class="breadcrumb-item active">Initial Debian-based Linux Setup for a Minimalist Programmer</li>
+
+                </ol>
+            </nav>
+        </div>
+        <hr>
+        
+        <section class="section">
+            <div class="container">
+                
+<h1 class="display-4">
+    Initial Debian-based Linux Setup for a Minimalist Programmer
+</h1>
+<p class="lead">By <b>Hildeberto Mendonca</b>, on <b>Saturday, February 28, 2026</b></p>
+
+<div class="row">
+    <div class="col-8">
+        <p>This setup is intended for programmers who want to solve problems with simple
+solutions.</p>
+<h3 id="sudo-command">sudo Command</h3>
+<p>Ubuntu and its derivatives already add the initial user in the SUDO group, but
+Debian requires us to explicitly add the user to the sudo group. This is how
+it is done:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> su -</span></span>
+<span class="giallo-l"><span style="color: #93A1A1;font-style: italic;">  # usermod -aG sudo username</span></span>
+<span class="giallo-l"><span style="color: #93A1A1;font-style: italic;">  # exit</span></span></code></pre>
+<p>Logout and login to the changes take effect.</p>
+<h3 id="install-dropbox">Install Dropbox</h3>
+<p>Dropbox is the most complete file sharing service available for Linux. Since
+we don't have a high volume of files to store, it is still the only solution
+that saves us time by not having to deal with a physical storage.</p>
+<p>First we install the dependencies:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo apt install python3-gpg</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo apt install libappindicator3-1</span></span></code></pre>
+<p>then we follow the instructions on <a rel="external" href="https://www.dropbox.com/install-linux">Dropbox's website</a>.</p>
+<p><a rel="external" href="https://www.proton.me/drive">Proton Drive</a> is an alternative to Dropbox but
+with several limitations on Linux. It offers a terminal client called
+<a rel="external" href="https://www.proton.me/blog/proton-drive-cli">Proton Drive CLI</a>, developed on
+top of <a rel="external" href="https://www.proton.me/blog/drive-sdk-june-2026">Proton Drive SDK</a>, as
+an initial step on Linux, but they still have a lot of work to do.</p>
+<h3 id="install-git">Install Git</h3>
+<p>A more comprehensive Git installation is covered in our
+<a href="/library/publications/"><strong>Git Experiences</strong></a> publication, available in the
+<a href="/library/">Library</a> section. It is required for the upcoming steps.</p>
+<h3 id="install-zsh-and-oh-my-zsh">Install zsh and Oh-My-Zsh</h3>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo apt install zsh</span></span></code></pre>
+<p>To install <strong>Oh-My-Zsh</strong>, follow the steps on the article
+<a href="/blog/oh-my-zsh/">Installing Oh-My-Zsh on Debian-Based Systems</a>.</p>
+<h3 id="install-vscode-and-zed">Install VSCode and Zed</h3>
+<p><a rel="external" href="https://code.visualstudio.com">VSCode</a> still has more features and support for
+more technologies. That's why it is still relevant. So, here is how we install it:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> cat /proc/sys/fs/inotify/max_user_watches</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo vi /etc/sysctl.conf</span><span> </span></span>
+<span class="giallo-l"><span style="color: #268BD2;">      fs.inotify.max_user_watches</span><span style="color: #2AA198;">=524288</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo sysctl</span><span style="color: #CB4B16;"> --system</span></span></code></pre>
+<p><a rel="external" href="https://zed.dev/">Zed</a> is slowly becoming my favorite IDE, specially because
+of its performance and usage of the GPU. The installation is easier:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">curl</span><span style="color: #CB4B16;"> -f</span><span style="color: #2AA198;"> https://zed.dev/install.sh</span><span style="color: #859900;"> |</span><span style="color: #268BD2;"> sh</span></span></code></pre><h3 id="install-rust">Install Rust</h3>
+<p>First, install the basic requirements for <code>rustup</code>:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo apt install build-essential</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo apt install curl</span></span></code></pre>
+<p>Now, intall <code>rustup</code>, the tool that manages Rust installation:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> curl</span><span style="color: #CB4B16;"> --proto</span><span style="color: #2AA198;"> &#39;=https&#39;</span><span style="color: #CB4B16;"> --tlsv1.2 -sSf</span><span style="color: #2AA198;"> https://sh.rustup.rs</span><span style="color: #859900;"> |</span><span style="color: #268BD2;"> sh</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">  This</span><span style="color: #2AA198;"> will download and install the official compiler for the Rust</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">  programming</span><span style="color: #2AA198;"> language, and its package manager, Cargo.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">  Rustup</span><span style="color: #2AA198;"> metadata and toolchains will be installed into the Rustup</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">  home</span><span style="color: #2AA198;"> directory, located at:</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">    /home/[username]/.rustup</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">  This</span><span style="color: #2AA198;"> can be modified with the RUSTUP_HOME environment variable.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">  The</span><span style="color: #2AA198;"> Cargo home directory is located at:</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">    /home/[username]/.cargo</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">  This</span><span style="color: #2AA198;"> can be modified with the CARGO_HOME environment variable.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">  The</span><span style="color: #2AA198;"> cargo, rustc, rustup and other commands will be added to</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">  Cargo&#39;s bin directory, located at:</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">    /home/[username]/.cargo/bin</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">  This path will then be added to your PATH environment variable by</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">  modifying the profile files located at:</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">    /home/[username]/.profile</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">    /home/[username]/.bashrc</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">    /home/[username]/.zshenv</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">  You can uninstall at any time with rustup self uninstall and</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">  these changes will be reverted.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">[reopen]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #268BD2;">$ cargo --version</span></span></code></pre>
+<p>From time to time, update your Rust installation:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> rustup update</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> rustup toolchain install stable</span></span></code></pre><h3 id="install-go">Install Go</h3>
+<p>Download the Go installation file from <a rel="external" href="https://go.dev/dl/">its website</a> and
+continue in the console:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo rm</span><span style="color: #CB4B16;"> -rf</span><span style="color: #2AA198;"> /usr/local/go</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo tar</span><span style="color: #CB4B16;"> -C</span><span style="color: #2AA198;"> /usr/local</span><span style="color: #CB4B16;"> -xzf</span><span style="color: #2AA198;"> go1.26.2.linux-amd64.tar.gz</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> cd</span><span style="color: #268BD2;"> $ZSH_CUSTOM</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> vi env.zsh</span></span>
+<span class="giallo-l"><span style="color: #586E75;font-weight: bold;">  export</span><span style="color: #268BD2;"> PATH</span><span style="color: #859900;">=</span><span style="color: #268BD2;">$PATH</span><span>:/</span><span style="color: #268BD2;">usr</span><span>/</span><span style="color: #268BD2;">local</span><span>/</span><span style="color: #268BD2;">go</span><span>/</span><span style="color: #268BD2;">bin</span></span>
+<span class="giallo-l"><span style="color: #586E75;font-weight: bold;">  export</span><span style="color: #268BD2;"> PATH</span><span style="color: #859900;">=</span><span style="color: #268BD2;">$PATH</span><span>:</span><span style="color: #859900;">~</span><span>/</span><span style="color: #268BD2;">go</span><span>/</span><span style="color: #268BD2;">bin</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[reopen]</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> go version</span></span></code></pre><h3 id="install-postgresql">Install PostgreSQL</h3>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo apt install postgresql</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> sudo su - postgres</span><span style="color: #CB4B16;"> -c</span><span style="color: #2AA198;"> &quot;createuser -s </span><span style="color: #268BD2;">$USER</span><span style="color: #2AA198;">&quot;</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> createdb</span></span></code></pre>
+<p>Refer to the publication <a href="/postgres-experiences/database.html">PostgreSQL Experences</a>
+to create application databases when needed.</p>
+<h3 id="install-claude-code">Install Claude Code</h3>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> curl</span><span style="color: #CB4B16;"> -fsSL</span><span style="color: #2AA198;"> https://claude.ai/install.sh</span><span style="color: #859900;"> |</span><span style="color: #268BD2;"> bash</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> echo &#39;export PATH=&quot;$HOME/.local/bin:$PATH&quot;&#39;</span><span style="color: #859900;"> &gt;&gt;</span><span style="color: #2AA198;"> ~/.zshrc</span><span> &amp;&amp;</span><span style="color: #268BD2;"> source</span><span style="color: #2AA198;"> ~/.zshrc</span></span></code></pre>
+    </div>
+    <div class="col-4">
+        
+            <div class="card">
+                <div class="card-header">Table of Content</div>
+                <div class="card-body">
+                    
+                        <ul>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/initial-debian-linux-setup/#sudo-command">sudo Command</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/initial-debian-linux-setup/#install-dropbox">Install Dropbox</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/initial-debian-linux-setup/#install-git">Install Git</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/initial-debian-linux-setup/#install-zsh-and-oh-my-zsh">Install zsh and Oh-My-Zsh</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/initial-debian-linux-setup/#install-vscode-and-zed">Install VSCode and Zed</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/initial-debian-linux-setup/#install-rust">Install Rust</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/initial-debian-linux-setup/#install-go">Install Go</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/initial-debian-linux-setup/#install-postgresql">Install PostgreSQL</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/initial-debian-linux-setup/#install-claude-code">Install Claude Code</a>
+                                
+                            </li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.minimily.com/about/" class="nav-link">About</a>
+                </li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2025 Minimily Solutions</p>
+        </footer> 
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>

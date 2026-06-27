@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minimily</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #2a4762;" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Minimily</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/about/">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    
+    <li class="breadcrumb-item"><a href="https://www.minimily.com/blog/">Blog</a></li>
+    <li class="breadcrumb-item active">Decomposing a Large Codebase Into Git Submodules</li>
+
+                </ol>
+            </nav>
+        </div>
+        <hr>
+        
+        <section class="section">
+            <div class="container">
+                
+<h1 class="display-4">
+    Decomposing a Large Codebase Into Git Submodules
+</h1>
+<p class="lead">By <b>Hildeberto Mendonca</b>, on <b>Saturday, June 28, 2025</b></p>
+
+<div class="row">
+    <div class="col-8">
+        <p>We recognize good developers by their capacity for cleaning existing code and
+adding a minimal amount of code for new features. Their pull requests are
+compact, favoring reusability and elegance. But even with their effort, some
+codebases are simply large due to the complexity of the business. That is
+the case of <a rel="external" href="https://github.com/uclouvain/osis">OSIS</a>, an open source software designed to manage the core
+business of the <a rel="external" href="https://www.uclouvain.be">Université catholique de Louvain</a>.</p>
+<p>OSIS is a <a rel="external" href="https://www.djangoproject.org">Django</a> project, composed of several applications.
+These applications could have their own resources or share resources with other
+applications. They could even be activated or deactivated at runtime, which means
+the entire codebase is not necessarily running in production. This architecture
+is so flexible that the IT department of the university decided to stimulate
+other departments, in need of a business application, to develop apps for OSIS,
+instead of other heterogeneous choices. We kindly called them "Satellite Apps"
+in the "OSIS Constellation". The strategy worked. Several apps were developed
+by different teams.</p>
+<span id="continue-reading"></span>
+<p>However, those apps had tripled OSIS' codebase, making it larger than what
+was originally planned. It isn't so serious in the case of a <a rel="external" href="https://www.python.org">Python</a> project
+because there is no such things as compilation, packaging or startup time. But
+a large codebase is harder to maintain and, when developed by multiple teams,
+could cause several workflow issues.</p>
+<p>To address this problem, we picked one of the apps, externalized it in a
+different repository and added it back to OSIS as a
+<a rel="external" href="https://git-scm.com/docs/git-submodule">Git submodule</a>. Some of you may argue that
+<a rel="external" href="https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git subtree</a> is a better option compared to Git submodule
+because of its transparency to other developers, but it is much more complex
+to configure, push and pull with the remote repository than to perform a single
+command like <code>git submodule update</code> whenever needed. Actually, we had been
+working with submodule for a while and we had no major issues up to this point.</p>
+<p><img src="/assets/images/content/github-repo-submodule.png" alt="GIT submodule" /></p>
+<p>Others might also have argued that it was time for micro services. Well, we
+didn't see it as an advantage just yet because we might reduce the codebase but
+we would, at the same time, complicate the architecture with an additional web
+service layer, additional security measures and more configurations. We didn't
+even have the excuse of a performance issue, so the added value was obviously
+not there yet. But when the time comes, what we have done will certainly
+simplify the transition to micro services.</p>
+<h2 id="moving-the-internship-app-to-a-new-repository">Moving the Internship App to a New Repository</h2>
+<p>I was working on the Internship app, one of those satellite apps, and
+here was a step-by-step guide to move the app to another repository and add it
+back as a submodule of <a rel="external" href="https://github.com/uclouvain/osis">OSIS</a>. To avoid messing up my programming
+environment, I had decided to do everything in a temporary folder:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> cd ~/python/projects/osis</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> mkdir temp</span></span></code></pre>
+<p>Then we cloned the OSIS repository inside of the temporary folder:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> cd temp</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git clone https://github.com/uclouvain/osis.git</span></span></code></pre>
+<p>To preserve the history of changes in the Internship app, we decided to start the
+new repository from a clone of OSIS:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git clone osis ./osis-internship</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> cd osis-internship</span></span></code></pre>
+<p>The default branch of OSIS was <code>dev</code>. After cloning it, the branch of
+<code>osis-internship</code> was also <code>dev</code>, so we had to create a <code>master</code> branch from
+<code>dev</code>, but you didn't have to do that if you had cloned the <code>master</code> branch of
+your repository:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git checkout</span><span style="color: #CB4B16;"> -b</span><span style="color: #2AA198;"> master</span></span></code></pre>
+<p>At that point, the repository <code>osis-internship</code> was ready for the clean up. The
+intention here was to remove all files that weren't part of Internship, put the
+content of the folder <code>internship</code> in the root of the repository and remove the
+folder <code>internship</code>:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git rm</span><span style="color: #CB4B16;"> -rf</span><span style="color: #2AA198;"> assessments/ backoffice/ assistant/ base/ dissertation/</span><span style="color: #CB4B16;"> \</span></span>
+<span class="giallo-l"><span style="color: #2AA198;">             reference/ attribution/ cms/ doc/ osis_common/ dev-settings.py</span><span style="color: #CB4B16;"> \</span></span>
+<span class="giallo-l"><span style="color: #2AA198;">             Dockerfile __init__.py</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git mv internship/</span><span style="color: #268BD2;">*</span><span style="color: #2AA198;"> .</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> rm</span><span style="color: #CB4B16;"> -rf</span><span style="color: #2AA198;"> internship</span></span></code></pre>
+<p>This was an important step, so we committed these changes. In this project, we
+put the number of the issue we were working on in the commit message:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git commit</span><span style="color: #CB4B16;"> -m</span><span style="color: #2AA198;"> &quot;INTERNSHIP-1 Removed unnecessary resources and moved the &quot;</span><span style="color: #CB4B16;"> \</span></span>
+<span class="giallo-l"><span style="color: #2AA198;">                &quot;content of the folder &#39;internship&#39; to the root.&quot;</span></span></code></pre>
+<p>The last steps for the repository <code>osis-internship</code> were to create a new
+repository on GitHub, reset the remote origin to point to this new GitHub
+repository and push the local master branch:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git remote set-url origin https://github.com/uclouvain/osis-internship.git</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git push origin master</span></span></code></pre>
+<p>The repository <a rel="external" href="https://github.com/uclouvain/osis-internship">osis-internship</a> now contained only the artifacts of the
+Internship app.</p>
+<h2 id="creating-the-submodule-in-the-osis-repository">Creating the Submodule in the OSIS Repository</h2>
+<p>Moving back to <code>osis</code>, we removed the folder <code>internship</code> and committed the
+change:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> cd ../osis</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git rm</span><span style="color: #CB4B16;"> -rf</span><span style="color: #2AA198;"> internship/</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git commit</span><span style="color: #CB4B16;"> -m</span><span style="color: #2AA198;"> &quot;OSIS-195 Folder &#39;internship&#39; removed.&quot;</span></span></code></pre>
+<p>Then we added the repository <code>uclouvain/osis-internship</code> as a submodule of
+<code>osis</code>:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git submodule add https://github.com/uclouvain/osis-internship.git</span><span style="color: #CB4B16;"> \</span></span>
+<span class="giallo-l"><span style="color: #2AA198;">      ./internship</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git submodule init</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git submodule update</span></span></code></pre>
+<p>Finally, we committed and pushed the change to GitHub:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git commit</span><span style="color: #CB4B16;"> -m</span><span style="color: #2AA198;"> &quot;OSIS-195 Submodule &#39;internship&#39; added.&quot;</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git push origin dev</span></span></code></pre>
+<p>Voilà! The new submodule was added to the codebase of OSIS, which is now
+smaller, since a submodule is just a reference to another repository.</p>
+<p><img src="/assets/images/content/github-repo-with-submodules.png" alt="OSIS&#39; submodules" /></p>
+<h2 id="how-to-develop-in-the-new-submodule">How to Develop in the New Submodule</h2>
+<p>At that point, the submodule was ready to be developed, but we had done
+everything in a temporary folder. So, we had to get back to the working
+environment and pull the latest changes:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> cd ~/python/projects/osis/osis</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git pull origin dev</span></span></code></pre>
+<p>Then we set up the local submodule:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git submodule init</span></span>
+<span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git submodule update</span></span></code></pre>
+<p>This setup was necessary every time the repository was cloned. After that, the
+only command we needed to remember was:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #268BD2;">$</span><span style="color: #2AA198;"> git submodule update</span></span></code></pre>
+<p>which would be useful when somebody else updated the reference to the
+<code>internship</code> repository, thus the latest modifications were not <em>in loco</em> yet.</p>
+<p>Using <code>submodule</code> we had a repository inside another one. So, when we were at
+the <code>osis</code> repository and typed <code>git status</code> we saw the active branch was <code>dev</code>.
+But when we entered the submodule <code>internship</code> and typed <code>git status</code>, we saw
+the active branch was <code>master</code>. These repositories had different remote origins
+(check with <code>git remote -v</code>), thus when we committed and pushed changes they
+went to their respective repositories. Therefore, developing <code>osis-internship</code>
+consisted of pulling, branching, committing, pushing and everything else in the
+submodule <code>internship</code>.</p>
+<p>We would add, in conclusion, that another important motivation to move an
+application to another repository was to have an independent lifecycle from the
+rest of the system. This was particularly important in applications developed by
+different teams under distinct context and subordination. Imagine how difficult
+it was to coordinate all parties to have a synchronized release under short
+iteration cycles. Using submodules, the application could evolve according to
+the pace of its team and be released without interfering on other projects'
+deadlines.</p>
+
+    </div>
+    <div class="col-4">
+        
+            <div class="card">
+                <div class="card-header">Table of Content</div>
+                <div class="card-body">
+                    
+                        <ul>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/decomposing-into-git-submodules/#moving-the-internship-app-to-a-new-repository">Moving the Internship App to a New Repository</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/decomposing-into-git-submodules/#creating-the-submodule-in-the-osis-repository">Creating the Submodule in the OSIS Repository</a>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/blog/decomposing-into-git-submodules/#how-to-develop-in-the-new-submodule">How to Develop in the New Submodule</a>
+                                
+                            </li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/blog/">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.minimily.com/about/" class="nav-link">About</a>
+                </li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2025 Minimily Solutions</p>
+        </footer> 
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>
