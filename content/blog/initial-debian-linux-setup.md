@@ -5,6 +5,9 @@ authors = ["Hildeberto Mendonca",]
 description = "This is all a programmer needs to build software in a minimalist way."
 +++
 
+This setup is intended for programmers who want to solve problems with simple
+solutions.
+
 ### sudo Command
 
 Ubuntu and its derivatives already add the initial user in the SUDO group, but
@@ -21,9 +24,9 @@ Logout and login to the changes take effect.
 
 ### Install Dropbox
 
-Dropbox is the only file sharing service available for Linux. Since we don't
-have a high volume of files to store, it is still the only solution that save
-us time by not having to deal with a physical storage.
+Dropbox is the most complete file sharing service available for Linux. Since
+we don't have a high volume of files to store, it is still the only solution
+that saves us time by not having to deal with a physical storage.
 
 First we install the dependencies:
 
@@ -46,12 +49,14 @@ A more comprehensive Git installation is covered in our
 [**Git Experiences**](/library/publications/) publication, available in the
 [Library](/library/) section. It is required for the upcoming steps.
 
-### Install zsh and oh-my-zsh
+### Install zsh and Oh-My-Zsh
 
 ```bash
 $ sudo apt install zsh
-$ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
+
+To install **Oh-My-Zsh**, follow the steps on the article
+[Installing Oh-My-Zsh on Debian-Based Systems](/blog/oh-my-zsh/).
 
 ### Install VSCode and Zed
 
@@ -131,9 +136,17 @@ $ rustup toolchain install stable
 
 ### Install Go
 
+Download the Go installation file from [its website](https://go.dev/dl/) and
+continue in the console:
+
 ```bash
 $ sudo rm -rf /usr/local/go
 $ sudo tar -C /usr/local -xzf go1.26.2.linux-amd64.tar.gz
+$ cd $ZSH_CUSTOM
+$ vi env.zsh
+  export PATH=$PATH:/usr/local/go/bin
+  export PATH=$PATH:~/go/bin
+
 [reopen]
 $ go version
 ```
@@ -142,7 +155,12 @@ $ go version
 
 ```bash
 $ sudo apt install postgresql
+$ sudo su - postgres -c "createuser -s $USER"
+$ createdb
 ```
+
+Refer to the publication [PostgreSQL Experences](/postgres-experiences/database.html)
+to create application databases when needed.
 
 ### Install Claude Code
 
