@@ -95,8 +95,8 @@ Open the `env.zsh` file and add the script, in this case, the definition of
 environment variables:
 
 ```bash
-$ export PATH=$PATH:/usr/local/go/bin
-$ export PATH=$PATH:~/go/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
 ```
 
 Finally, we can close the terminal window and open a new one to apply our changes.
