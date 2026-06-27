@@ -8,7 +8,8 @@ description = "This is all a programmer needs to build software in a minimalist 
 ### sudo Command
 
 Ubuntu and its derivatives already add the initial user in the SUDO group, but
-Debian requires us to explicitly add the user to the sudo group. This is how it is done: 
+Debian requires us to explicitly add the user to the sudo group. This is how
+it is done: 
 
 ```bash
 $ su -
@@ -20,18 +21,30 @@ Logout and login to the changes take effect.
 
 ### Install Dropbox
 
-Dependency:
+Dropbox is the only file sharing service available for Linux. Since we don't
+have a high volume of files to store, it is still the only solution that save
+us time by not having to deal with a physical storage.
+
+First we install the dependencies:
 
 ```bash
 $ sudo apt install python3-gpg
 $ sudo apt install libappindicator3-1
 ```
 
+then we follow the instructions on [Dropbox's website](https://www.dropbox.com/install-linux).
+
+[Proton Drive](https://www.proton.me/drive) is an alternative to Dropbox but
+with several limitations on Linux. It offers a terminal client called 
+[Proton Drive CLI](https://www.proton.me/blog/proton-drive-cli), developed on
+top of [Proton Drive SDK](https://www.proton.me/blog/drive-sdk-june-2026), as
+an initial step on Linux, but they still have a lot of work to do.
+
 ### Install Git
 
-```bash
-$ sudo apt install git
-```
+A more comprehensive Git installation is covered in our
+[**Git Experiences**](/library/publications/) publication, available in the
+[Library](/library/) section. It is required for the upcoming steps.
 
 ### Install zsh and oh-my-zsh
 
@@ -42,8 +55,8 @@ $ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/insta
 
 ### Install VSCode and Zed
 
-VS Code still have more features and more support for different technologies.
-That's why it is still required. So, here is how I installed it:
+[VSCode](https://code.visualstudio.com) still has more features and support for
+more technologies. That's why it is still relevant. So, here is how we install it:
 
 ```bash
 $ cat /proc/sys/fs/inotify/max_user_watches
@@ -52,8 +65,8 @@ $ sudo vi /etc/sysctl.conf
 $ sudo sysctl --system
 ```
 
-Zed is slowly becoming my favorite IDE, specially because of its performance
-and usage of the GPU. The installation is easier:
+[Zed](https://zed.dev/) is slowly becoming my favorite IDE, specially because
+of its performance and usage of the GPU. The installation is easier:
 
 ```bash
 curl -f https://zed.dev/install.sh | sh
