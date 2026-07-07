@@ -45,7 +45,7 @@ It takes sometime to compile, but once it is done, the command `typst` becomes
 available in the console:
 
 ```bash
-$ typst document.typ
+$ typst compile document.typ
 ```
 
 To upgrade Typst, just compile it again, using the `--forge` argument:
