@@ -63,12 +63,20 @@ To install **Oh-My-Zsh**, follow the steps on the article
 [VSCode](https://code.visualstudio.com) still has more features and support for
 more technologies. That's why it is still relevant. So, here is how we install it:
 
-```bash
-$ cat /proc/sys/fs/inotify/max_user_watches
-$ sudo vi /etc/sysctl.conf 
-      fs.inotify.max_user_watches=524288
-$ sudo sysctl --system
-```
+1. Download the installation file from the website and follow the installation
+   instructions
+
+2. Configure the operating system to allow watching more files for changes
+
+    ```bash
+    $ cat /proc/sys/fs/inotify/max_user_watches
+    $ sudo vi /etc/sysctl.conf 
+        fs.inotify.max_user_watches=524288
+    $ sudo sysctl --system
+    ```
+
+3. Go to **File > Preferences > Settings** and search for "Line Height", then
+   set it to 26, which is a comfortable spacing between lines.
 
 [Zed](https://zed.dev/) is slowly becoming my favorite IDE, specially because
 of its performance and usage of the GPU. The installation is easier:
@@ -90,7 +98,12 @@ Now, intall `rustup`, the tool that manages Rust installation:
 
 ```bash
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
 
+It prints the following message, describing the installation. I recommend
+taking note of it for future reference:
+
+```
   This will download and install the official compiler for the Rust
   programming language, and its package manager, Cargo.
 
