@@ -147,6 +147,15 @@ $ rustup update
 $ rustup toolchain install stable
 ```
 
+To have a better development experience, install Cargo Watch:
+
+```bash
+$ cargo install cargo-watch
+$ cargo watch -x check -x run
+```
+
+It recompiles the project everytime the source code changes.
+
 ### Install Go
 
 Download the Go installation file from [its website](https://go.dev/dl/) and
