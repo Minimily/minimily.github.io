@@ -37,6 +37,22 @@ $ sudo apt install libappindicator3-1
 
 then we follow the instructions on [Dropbox's website](https://www.dropbox.com/install-linux).
 
+It might be necessary to increase the system's inotify file watch limit:
+
+```bash
+$ cat /proc/sys/fs/inotify/max_user_watches
+$ sudo vi /etc/sysctl.conf 
+    fs.inotify.max_user_watches=1000000
+$ sudo sysctl --system
+```
+
+Then stop and restart Dropbox:
+
+```bash
+$ dropbox stop
+$ dropbox start -i
+```
+
 [Proton Drive](https://www.proton.me/drive) is an alternative to Dropbox but
 with several limitations on Linux. It offers a terminal client called 
 [Proton Drive CLI](https://www.proton.me/blog/proton-drive-cli), developed on
@@ -71,7 +87,7 @@ more technologies. That's why it is still relevant. So, here is how we install i
     ```bash
     $ cat /proc/sys/fs/inotify/max_user_watches
     $ sudo vi /etc/sysctl.conf 
-        fs.inotify.max_user_watches=524288
+        fs.inotify.max_user_watches=1000000
     $ sudo sysctl --system
     ```
 
