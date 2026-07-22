@@ -72,7 +72,7 @@ $ sudo apt install zsh
 ```
 
 To install **Oh-My-Zsh**, follow the steps on the article
-[Installing Oh-My-Zsh on Debian-Based Systems](/blog/oh-my-zsh/).
+[Installing Oh-My-Zsh on Debian-Based Systems](/articles/oh-my-zsh/).
 
 ### Install VSCode and Zed
 

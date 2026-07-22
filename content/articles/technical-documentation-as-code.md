@@ -39,7 +39,7 @@ text with a minimalist syntax, easy to memorize. Their plain text model has
 been proven viable with the success of LaTex in the scientific world for
 decades. This kind of format is largely used for technical writing these days.
 
-Markdown is the simplest and most popular format. I use it to write this blog
+Markdown is the simplest and most popular format. I use it to write this article
 and the experience has been better than my previous Wordpress version. Now, my
 texts are cleaner, well formatted and standardized after days migrating the
 messy content managed by Wordpress to the elegant and efficient [Jekyll]. On
