@@ -94,6 +94,13 @@ more technologies. That's why it is still relevant. So, here is how we install i
 3. Go to **File > Preferences > Settings** and search for "Line Height", then
    set it to 26, which is a comfortable spacing between lines.
 
+To upgrade VSCode, download the most recent package from 
+https://code.visualstudio.com/ and run the following command:
+
+```bash
+$ sudo dpkg -i code_1.129.1-129.1-1784303641_amd64.deb
+```
+
 [Zed](https://zed.dev/) is slowly becoming my favorite IDE, specially because
 of its performance and usage of the GPU. The installation is easier:
 
