@@ -170,7 +170,7 @@ $ rustup update
 $ rustup toolchain install stable
 ```
 
-To have a better development experience, install Cargo Watch:
+For a better development experience, install Cargo Watch:
 
 ```bash
 $ cargo install cargo-watch
@@ -194,6 +194,13 @@ $ vi env.zsh
 
 [reopen]
 $ go version
+```
+
+For an improved development experience, install `wgo`:
+
+```bash
+$ go install github.com/bokwoon95/wgo@latest
+$ wgo run main.go
 ```
 
 ### Install PostgreSQL
