@@ -27,3 +27,10 @@ in the occasions when the AI is out of service.
 So yes, when we develop software, we will be way more productive than
 before, but less productive than someone who only uses vibe coding and doesn't
 take the time to understand and criticize what is generated.
+
+For repetitive tasks, don't ask AI to do it. Ask AI to generate code that does
+the repetitive task, and run that code when you need the task done. I realized
+that when I asked AI to restore a database from a backup and it did it well,
+but I knew I would do it again in the future, so I asked AI to generate a
+script that reproduces the same steps, and now I can run that script whenever
+I need to restore a database from a backup, without using tokens.

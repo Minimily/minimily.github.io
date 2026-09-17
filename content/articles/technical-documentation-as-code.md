@@ -159,6 +159,8 @@ My ultimate challenge is to convince other developers that documentation is as
 important as the code itself, because it ensures long term maintenance and the
 longevity of the project. But this is a subject for another time.
 
+Poster: https://www.dropbox.com/scl/fi/v0u52lzb8mkn6lj2ut96e/row-club-records-poster.pdf?rlkey=v1fjzsubipjwh6zaoy9un66oo&st=2znq4rpl&dl=0
+
 [Asciidoc]: http://asciidoc.org
 [Git]: https://git-scm.com
 [Jekyll]: /2018/03/installing-using-jekyll-linux.html
