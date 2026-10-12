@@ -21,9 +21,17 @@ Execute the following commands to install PostgreSQL:
 
 ## Database
 
+A server can host multiple databases.
+
 ### Create a Database
 
-Then create the database for the application:
+Before creating a database, check if it doesn't already exist:
+
+    $ sudo su - postgres
+    $ psql
+      postgres=# \list
+
+If it doesn't exist, go ahead and create it for the application:
 
     $ sudo su - postgres
     $ psql
