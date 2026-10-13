@@ -74,7 +74,7 @@ $ sudo apt install zsh
 To install **Oh-My-Zsh**, follow the steps on the article
 [Installing Oh-My-Zsh on Debian-Based Systems](/articles/oh-my-zsh/).
 
-### Install VSCode and Zed
+### Install VSCode
 
 [VSCode](https://code.visualstudio.com) still has more features and support for
 more technologies. That's why it is still relevant. So, here is how we install it:
@@ -100,6 +100,8 @@ https://code.visualstudio.com/ and run the following command:
 ```bash
 $ sudo dpkg -i code_1.129.1-129.1-1784303641_amd64.deb
 ```
+
+### Install Zed
 
 [Zed](https://zed.dev/) is slowly becoming my favorite IDE, specially because
 of its performance and usage of the GPU. The installation is easier:
