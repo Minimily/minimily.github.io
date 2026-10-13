@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minimily</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #2a4762;" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Minimily</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/articles/">Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.minimily.com/about/">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    
+    <li class="breadcrumb-item"><a href="https://www.minimily.com/articles/">Articles</a></li>
+    <li class="breadcrumb-item active">Kick Starting with Git</li>
+
+                </ol>
+            </nav>
+        </div>
+        <hr>
+        
+        <section class="section">
+            <div class="container">
+                
+<h1 class="display-4">
+    Kick Starting with Git
+</h1>
+<p class="lead">By <b>Hildeberto Mendonca</b>, on <b>Thursday, May 28, 2026</b></p>
+
+<div class="row">
+    <div class="col-8">
+        <h1 id="introduction">Introduction</h1>
+<p>Git is a distributed version control system used to manage the source code of Digger. We can use apt-get to install Git:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ sudo apt-get install git</span></span></code></pre>
+<p>Before using Git, let's do a few initial configurations:</p>
+<ol>
+<li>
+<p>The initial branch name to use in all new repositories:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git config --global init.DefaultBranch main</span></span></code></pre></li>
+<li>
+<p>Identify the author of the commits:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git config --global user.email &quot;you@example.com&quot;</span></span>
+<span class="giallo-l"><span>$ git config --global user.name &quot;Your Name&quot;</span></span></code></pre></li>
+<li>
+<p>In case of divergent branches, Git offers different strategies to merge the
+remote and local changes. We need to specify how to reconcile them by
+running one of the following commands before your next pull:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git config --global pull.rebase false  # merge</span></span>
+<span class="giallo-l"><span>$ git config --global pull.rebase true   # rebase</span></span>
+<span class="giallo-l"><span>$ git config --global pull.ff only       # fast-forward only</span></span></code></pre></li>
+</ol>
+<h4 id="configuring-git-to-simplify-authentication">Configuring Git to Simplify Authentication</h4>
+<p>For the moment, every time we push code to GitHub the prompt asks for a username and password. We can bypass this step by registering a SSH key. To do that, we first check whether there is already an existing SSH key we can reuse:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ ls -al ~/.ssh</span></span></code></pre>
+<p>If files with the extension .pub are listed then one of them can be reused to authenticate to GitHub. If not, then we can create one:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ ssh-keygen -t rsa -b 4096 -C &quot;[firstname.lastname]@domain.com&quot;</span></span>
+<span class="giallo-l"><span>  Enter file in which to save the key (/Users/[user]/.ssh/id_rsa): [Press enter]</span></span>
+<span class="giallo-l"><span>  Enter passphrase (empty for no passphrase): [Type a passphrase]</span></span>
+<span class="giallo-l"><span>  Enter same passphrase again: [Type passphrase again]</span></span></code></pre>
+<p>The generated keys need to be protected with the right permissions otherwise the access won't work:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ chmod 700 ~/.ssh</span></span>
+<span class="giallo-l"><span>$ chmod 644 ~/.ssh/id_rsa.pub</span></span>
+<span class="giallo-l"><span>$ chmod 600 ~/.ssh/id_rsa</span></span></code></pre>
+<p>The next step is to add the new key - or an existing one - to the ssh-agent. This program runs the duration of a local login session, stores unencrypted keys in memory, and communicates with SSH clients using a Unix domain socket. Everyone who is able to connect to this socket also has access to the ssh-agent. First, we have to enable the ssh-agent:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ eval &quot;$(ssh-agent -s)&quot;</span></span></code></pre>
+<p>And add key to it:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ ssh-add ~/.ssh/id_rsa</span></span></code></pre>
+<p>The next step is to make GitHub aware of the key. For that, we have to copy the exact content of the file <code>id_rsa.pub</code> and paste into GitHub. To make no mistake about the copy, install a program called xclip:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ sudo apt-get install xclip</span></span></code></pre>
+<p>And then copy the content of the file <code>id_rsa.pub</code> in the clipboard:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ xclip -sel clip &lt; ~/.ssh/id_rsa.pub</span></span></code></pre>
+<p>The command above is the equivalent of opening the file <code>~/.ssh/id_rsa.pub</code>, selecting the whole content and pressing <code>Ctrl+C</code>. This way, you can paste the content on GitHub when required in the next steps. On the GitHub side:</p>
+<ol>
+<li>
+<p>Login at https://github.com</p>
+</li>
+<li>
+<p>In the top right corner of the page, click on the profile photo and select Settings</p>
+</li>
+<li>
+<p>In the user settings sidebar, click SSH keys</p>
+</li>
+<li>
+<p>Then click Add SSH key</p>
+</li>
+<li>
+<p>In the form, define a friendly title for the new key and paste the key in the Key field</p>
+</li>
+<li>
+<p>Click Add Key to finish with GitHub</p>
+</li>
+</ol>
+<p>To make sure everything is working, lets test the connection:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ ssh -T git@github.com</span></span>
+<span class="giallo-l"><span>  The authenticity of host &#39;github.com (207.97.227.239)&#39; can&#39;t be established.</span></span>
+<span class="giallo-l"><span>  RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span></span>
+<span class="giallo-l"><span>  Are you sure you want to continue connecting (yes/no)? yes</span></span>
+<span class="giallo-l"><span>  _</span></span>
+<span class="giallo-l"><span>  Hi [username]! You&#39;ve successfully authenticated, but GitHub does not</span></span>
+<span class="giallo-l"><span>  provide shell access.</span></span></code></pre><h1 id="repository">Repository</h1>
+<p>We can test the installation by cloning the Digger repository:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ mkdir -p ~/java/projects/digger</span></span>
+<span class="giallo-l"><span>$ cd ~/java/projects/digger</span></span>
+<span class="giallo-l"><span>$ git clone git@github.com:htmfilho/digger.git .</span></span></code></pre>
+<p>This configuration works only when we use a ssh connection to GitHub. To verify that, go to one of your local GitHub projects and check the url pointing to the server:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ cd ~/java/projects/digger</span></span>
+<span class="giallo-l"><span>$ git remote -v</span></span></code></pre>
+<p>If the url starts with https:// then you are using <code>https</code> instead of <code>ssh</code>. In this case, you should change the url to the ssh one:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git remote set-url origin git@github.com:htmfilho/digger.git</span></span></code></pre>
+<p>The automatic authentication should work after that.</p>
+<p>By the way, when the repository is too big, with a long versioning history, we
+may consider cloning only the latest version to kick-off our day faster. We do
+it using the <code>--depth</code> parameter:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git clone --depth 1 -b master git@github.com:htmfilho/digger.git</span></span></code></pre>
+<p>When we have our configuration done and everything is working, before stopping
+for the day, run:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git fetch --unshallow</span></span></code></pre>
+<p>to download the rest of the repo. We want this to enable the "blame" feature in
+our IDE.</p>
+<h4 id="changing-the-author-to-the-one-recognizable-by-github">Changing The Author To The One Recognizable by GitHub</h4>
+<p>In case your default Git author is not the same as GitHub, configure the author of the repository:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git config --local user.name &quot;John Doe&quot;</span></span>
+<span class="giallo-l"><span>$ git config --local user.email &quot;john@doe.org&quot;</span></span></code></pre>
+<p>It can also be done to a specific commit:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git commit --author#&quot;John Doe &lt;john@doe.org&gt;&quot;</span></span></code></pre><h4 id="setting-pull-behaviour">Setting Pull Behaviour</h4>
+<p>The <code>git pull</code> command merges the remote branch into the local branch with a merge commit, but we don't think this commit is useful. We want to make sure our commits represent changes made by developers only. So, we would like to ask you to use rebase to merge remote branches locally. You can do it at every <code>pull</code> with:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git pull --rebase origin master</span></span></code></pre>
+<p>or change a local configuration to make it the default <code>pull</code> behavior:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git config --local pull.rebase true</span></span></code></pre>
+<p>Note: you don't need to run this local configuration if you already have it globally.</p>
+<h4 id="pruning-deleted-remote-branches">Pruning Deleted Remote Branches</h4>
+<p>When branches are removed from origin, this change is not automatically reflected in the local clone when doing a git pull or git fetch. To have deleted remote branches automatically pruned from the local repo, set the following config:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git config --global fetch.prune true</span></span></code></pre><h1 id="workflow">Workflow</h1>
+<p>Let's first clarify that, when discussing the workflow, we use the term "Issue" to refer to a change request, not a technical issue that could happen when we are dealing with version control.</p>
+<h2 id="before">Before</h2>
+<p>Before doing the work.</p>
+<h2 id="during">During</h2>
+<p>While doing the work.</p>
+<h3 id="dealing-with-unexpected-issues">Dealing with Unexpected Issues</h3>
+<p>Imagine a scenario where you are busy, working on an issue, then a more urgent issue comes up, so you have to pause what you are doing to shift context. It happens all the time. Git is our best friend in this kind of situation, but we have to use it properly.</p>
+<h4 id="the-dev-branch-must-be-immutable">The <code>dev</code> Branch Must Be Immutable</h4>
+<p>I was working on an issue and, in the spirit of saving time, I have commited changes directly to the branch <code>main</code>. In this project, we could not push changes to the remote branch <code>main</code>, so we needed to create a separate branch from <code>main</code> and create a pull request. I thought I could simply do that and move on, which normally works when everything goes well.</p>
+<p>However, I may need to test something in <code>main</code> before the pull request is accepted, but since it contains changes then it doesn´t behave the same way. I would need to reset my local dev branch to be able to reproduce the issue. It can be done running:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="bat"><span class="giallo-l"><span>$ git reset --hard origin/main</span></span></code></pre><h3 id="change-the-most-recent-commit-message">Change the Most Recent Commit Message</h3>
+<p>The command below will open the text editor where we can change the commit message:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git commit --amend</span></span></code></pre><h3 id="adding-a-file-to-the-most-recent-commit">Adding a File to the Most Recent Commit</h3>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git add missed-file.txt</span></span>
+<span class="giallo-l"><span>$ git commit --amend</span></span></code></pre><h3 id="undo-the-most-recent-commit">Undo the Most Recent Commit</h3>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git reset HEAD~</span></span></code></pre><h2 id="after">After</h2>
+<p>Once the work is done, many situations can happen. Here is how to deal with them.</p>
+<h3 id="changing-several-commits-in-bulk">Changing Several Commits in Bulk</h3>
+<p>If commits were done with a wrong author, use Git Rebase to fix the authors of the commits:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git rebase -i -p &lt;commit-id&gt;</span></span>
+<span class="giallo-l"><span>$ git commit --amend --author=&quot;John Doe &lt;john@doe.org&gt;&quot;</span></span>
+<span class="giallo-l"><span>$ git rebase --continue</span></span>
+<span class="giallo-l"><span>$ git push -f origin master</span></span></code></pre>
+<p>The rebase starts from the commit after the informed <code>&lt;commit-id&gt;</code>. It wouldn't work if the rebase needs to consider the very first commit. To include the first commit, start an interactive rebase of all commits using <code>git rebase -i --root</code>.</p>
+<h3 id="undo-one-or-more-commits-pushed-to-remote">Undo One or More Commits Pushed to Remote</h3>
+<p>Update the working branch to have it as a backup:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ cd ~/java/projects/project</span></span>
+<span class="giallo-l"><span>$ git pull origin master</span></span></code></pre>
+<p>Create a new clone to use as experimentation:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ cd ..</span></span>
+<span class="giallo-l"><span>$ git clone git@github.com:htmfilho/project.git project-temp</span></span>
+<span class="giallo-l"><span>$ cd project-temp</span></span></code></pre>
+<p>You can also clone a specific branch:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git clone --branch bugfix git@github.com:htmfilho/project.git project-temp</span></span></code></pre>
+<p>Look at the log to see the id of the latest valid commit:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git log</span></span></code></pre>
+<p>Force the head of the tree to point to the latest valid commit:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git reset –hard 73d48037</span></span></code></pre>
+<p>Force the new head into the remote branch (origin):</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git push –force origin master</span></span></code></pre>
+<p>The clients that still have the old commits should update their local branches accordingly before the next push:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git reset –hard origin/master</span></span></code></pre><h3 id="remove-a-file-from-the-repository-without-deleting-it">Remove a File From the Repository Without Deleting It</h3>
+<p>For a single file:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git rm --cached mylogfile.log</span></span></code></pre>
+<p>For a single directory:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git rm --cached -r logs</span></span></code></pre><h3 id="restore-a-deleted-branch">Restore a Deleted Branch</h3>
+<p>The follow commands recover a branch that was deleted locally with the command <code>git branch -D issue-52</code>. Use <code>reflog</code> to figure out the <em><sha></em> of the deleted branch:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git reflog</span></span></code></pre>
+<p>Take note of the <em><sha></em> and jump into it:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git checkout -b issue-52 dc4b3ff</span></span></code></pre>
+<p>Look at the log to see if it contains what you are looking for:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git log</span></span></code></pre>
+<p>Finally, move to the master branch and merge the recovered branch into it:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git checkout master</span></span>
+<span class="giallo-l"><span>$ git merge issue-52</span></span></code></pre><h3 id="cherry-pick-a-commit-from-one-branch-to-another">Cherry Pick a Commit from One Branch to Another</h3>
+<p>In some projects, we may have release branches. The ones that are deteched from
+the main branch when all the features planned for the release are done. This
+release branch allows development work to continue in the main branch without
+affecting what is about to be released.</p>
+<p>However, when the release branch is deployed to a staging environment, we may
+find some bug that needs to be fixed before deploying to production. In this
+scenario, we have to push the same fix to the release branch as well as to the
+main branch, to ensure the fix is carried on to future releases.</p>
+<p>To save some effort, start working on the release branch, commiting the fix and
+creating a pull request. Then follow these steps to add the fix to the main
+branch:</p>
+<ol>
+<li>
+<p>Get the hash or the hard range of all commits related to the fix. You can
+see the hashes using:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git log</span></span></code></pre></li>
+<li>
+<p>Move to the main branch:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git checkout main</span></span>
+<span class="giallo-l"><span>$ git pull</span></span></code></pre></li>
+<li>
+<p>Create a branch for the change:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git checkout -b fix-123</span></span></code></pre></li>
+<li>
+<p>Cherry-pick the fix from the release branch using the hashes:</p>
+<pre class="giallo" style="color: #657B83; background-color: #FDF6E3;" ><code data-lang="plain"><span class="giallo-l"><span>$ git cherry-pick &lt;hash1&gt; &lt;hash2&gt; &lt;hash3&gt;</span></span></code></pre></li>
+</ol>
+<p>After this, you may have to fix code conflicts, making sure the fix is adapted
+to recent changes in the main branch.</p>
+
+    </div>
+    <div class="col-4">
+        
+            <div class="card">
+                <div class="card-header">Table of Content</div>
+                <div class="card-body">
+                    
+                        <ul>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#introduction">Introduction</a>
+                                
+                                    <ul>
+                                        
+                                            <li>
+                                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#configuring-git-to-simplify-authentication">Configuring Git to Simplify Authentication</a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#repository">Repository</a>
+                                
+                                    <ul>
+                                        
+                                            <li>
+                                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#changing-the-author-to-the-one-recognizable-by-github">Changing The Author To The One Recognizable by GitHub</a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#setting-pull-behaviour">Setting Pull Behaviour</a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#pruning-deleted-remote-branches">Pruning Deleted Remote Branches</a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#workflow">Workflow</a>
+                                
+                                    <ul>
+                                        
+                                            <li>
+                                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#before">Before</a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#during">During</a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="https://www.minimily.com/articles/kick-startng-with-git/#after">After</a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/articles/">Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/products/">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.minimily.com/library/">Library</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.minimily.com/about/" class="nav-link">About</a>
+                </li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2025 Minimily Solutions</p>
+        </footer> 
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>
